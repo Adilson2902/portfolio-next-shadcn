@@ -93,6 +93,8 @@
   --sidebar-accent-foreground: var(--secondary-foreground);
   --sidebar-border: var(--border);
   --sidebar-ring: var(--ring);
+
+  --animation-spin: 'spin 10s linear infinite';
 }
 
 .dark {

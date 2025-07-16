@@ -1,41 +1,32 @@
 'use client'
 
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import { Menubar,  MenubarMenu,  MenubarTrigger } from "../ui/menubar";
+import { Home, User2, Briefcase, Code2, Mail} from 'lucide-react';
 
 export function Navbar() {
-  return (
-    <header className="w-full border-b border-border bg-background fixed z-50">
-      <div className="container flex items-center justify-between h-16 px-4">
-        {/* Logo */}
-        <Link href="/" className="text-xl font-bold text-primary">
-          Portfólio
-        </Link>
-
-        {/* Navegação */}
-        <NavigationMenu>
-          <NavigationMenuList className="gap-2">
-            {["Home", "About", "Experience", "Portfolio", "Contact"].map((item) => (
-              <NavigationMenuItem key={item}>
-                <Link href={`#${item.toLowerCase()}`} legacyBehavior passHref>
-                  <a className={navigationMenuTriggerStyle()}>{item}</a>
-                </Link>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
-
-        {/* Botão de ação (opcional) */}
-        <Button size="sm" variant="default" className="hidden sm:inline-flex">
-          Let’s Talk
-        </Button>
-      </div>
-    </header>
+ return (
+  <div className="fixed h-screen w-screen flex justify-center items-end mb-5 ">
+    <Menubar className="w-md flex justify-around rounded-4xl">
+      <MenubarMenu>
+        <MenubarTrigger className="hover:bg-chart-2 cursor-pointer rounded-2xl"><Home className="h5 w5" /></MenubarTrigger>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger  className="hover:bg-chart-2 cursor-pointer rounded-2xl"><User2 className="h5 w5" /></MenubarTrigger>
+       
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger  className="hover:bg-chart-2 cursor-pointer rounded-2xl"><Briefcase className="h5 w5" /></MenubarTrigger>
+       
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger  className="hover:bg-chart-2 cursor-pointer rounded-2xl"><Code2 className="h5 w5" /></MenubarTrigger>
+      
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger  className="hover:bg-chart-2 cursor-pointer rounded-2xl"><Mail className="h5 w5" /></MenubarTrigger>
+      
+      </MenubarMenu>
+    </Menubar>
+    </div>
   )
 }
