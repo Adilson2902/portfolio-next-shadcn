@@ -2,6 +2,14 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Space_Grotesk  } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "../components/Navbar";
+import { DM_Sans } from 'next/font/google';
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'], 
+  variable: '--font-dm-sans',
+  display: 'swap',
+});
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -34,7 +42,7 @@ export default function RootLayout({
     <html lang="en">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"></link>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${dmSans.variable} antialiased`}
       >
         <Navbar />
         {children}

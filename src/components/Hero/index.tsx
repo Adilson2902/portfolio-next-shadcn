@@ -106,16 +106,16 @@ export function Hero() {
         </div>
 
         {/* Título */}
-        <h1 className="text-4xl sm:text-5xl font-extrabold font-space-grotesk mb-2 text-primary">
+        <h1 className="text-2xl sm:text-3xl font-extrabold font-space-grotesk mb-2 text-primary ">
           Hey I am{" "}
         </h1>
-        <span className="bg-gradient-to-r  text-6xl sm:text-7xl font-space-grotesk  from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r  text-6xl sm:text-7xl font-space-grotesk  from-blue-500 via-purple-500 mb-4 to-pink-500 bg-clip-text text-transparent">
             Adilson
           </span>
 
         {/* Subtítulo */}
-        <p className="text-muted-foreground text-base sm:text-lg mb-6">
-          Web Developer and Software Engineer
+        <p className="text-muted-foreground text-base sm:text-lg mb-6 font-space-grotesk">
+         Front-end Developer | Creating seamless experiences with React & React Native.
         </p>
       </div>
     </section>
