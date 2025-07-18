@@ -4,7 +4,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="w-full bg-background pt-24 pb-16 text-center"
+      className="w-full bg-background pt-24  text-center"
     >
       <div className="container max-w-3xl mx-auto px-4 flex flex-col items-center justify-center">
         {/* Foto de perfil com ícones girando */}

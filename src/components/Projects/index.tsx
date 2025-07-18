@@ -7,9 +7,9 @@ export default function Projects() {
   ];
 
   return (
-    <section className="py-20 px-4">
-      <h2 className="text-3xl font-bold mb-8 text-primary">Projetos</h2>
-      <div className="grid md:grid-cols-2 gap-6">
+    <section className="py-20 px-4 w-full flex flex-col justify-center">
+      <h2 className="text-3xl font-bold mb-8 text-primary text-center">Projects</h2>
+      <div className="grid md:grid-cols-2 gap-6 mt-4">
         {projects.map((project, index) => (
           <Card key={index}>
             <CardContent>
