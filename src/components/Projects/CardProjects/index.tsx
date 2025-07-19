@@ -28,18 +28,34 @@ const CardProjects: React.FC<Props> = ({ title, gitLink, website }) => {
       <p className="text-text-fix text-center font-medium mb-3">{title}</p>
 
       <div className="flex gap-2 justify-center">
-        <Button  className="border-text-fix border-2 h-8 bg-primary rounded-3xl text-text-fix cursor-pointer">
-          <a href={gitLink} target="_blank" rel="noopener noreferrer" className="cursor-pointer flex items-center justify-center w-full h-full">
-            <FaGithub />
-          </a>
-        </Button>
+  <Button
+    asChild
+    className="border-text-fix border-2 h-8 bg-primary rounded-3xl text-text-fix"
+  >
+    <a
+      href={gitLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="cursor-pointer"
+    >
+      <FaGithub />
+    </a>
+  </Button>
 
-        <Button  className="bg-text-fix h-8 rounded-3xl text-primary cursor-pointer">
-          <a href={website} target="_blank" rel="noopener noreferrer" className="cursor-pointer flex items-center justify-center w-full h-full">
-            <CgWebsite />
-          </a>
-        </Button>
-      </div>
+  <Button
+    asChild
+    className="bg-text-fix h-8 rounded-3xl text-primary"
+  >
+    <a
+      href={website}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="cursor-pointer"
+    >
+      <CgWebsite />
+    </a>
+  </Button>
+</div>
     </Card>
   );
 };

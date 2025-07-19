@@ -30,13 +30,13 @@ export default function Skills() {
     { title: "Firebase", experience: "Experienced" },
   ];
   return (
-    <section className="py-20 px-4 flex w-full justify-center flex-col items-center">
+    <section className=" flex w-full justify-center flex-col items-center">
       <h2 className="text-3xl font-bold mb-8 text-primary">Skills</h2>
-      <ul className="grid grid-cols-2 md:grid-cols-2 gap-2 text-muted-foreground mt-3">
+        <ul className="flex flex-col xl:flex-row justify-center mb-4">
          <CardSkills  title="Front Development" skillsExperience={frontendSkills}/> 
          <CardSkills  title="Back Development" skillsExperience={backendSkills}/>
-         <CardSkills  title="Android Development" skillsExperience={mobileSkills}/>
-      </ul>
+        </ul>
+        <CardSkills  title="Android Development" skillsExperience={mobileSkills}/>
     </section>
   );
 }

@@ -33,13 +33,26 @@ const CardContact: React.FC<IPropsCardContact> = ({ type_icon, textSocial}) => {
 
 
 
-  return <Card className='w-96 h-36 bg-primary rounded-3xl flex flex-row items-center gap-0 justify-between p-6'>
+  return <Card className='w-96 h-36 bg-primary rounded-3xl mt-5 flex flex-row items-center gap-0 justify-between p-6 xl:mt-0'>
     <div className='flex flex-col justify-center items-center'>
      {icon}
      {title}
      </div>
      <div className='flex flex-col justify-center items-start'>
-     <p className='font-dm-sans font-normal text-xl text-text-fix p-0 m-0'>{textSocial}</p>
+     <a
+      href={
+         type_icon === 'mail'
+            ? `mailto:${textSocial}`
+            : type_icon === 'whatsApp'
+            ? `https://wa.me/${textSocial.replace(/\D/g, '')}`
+            : `https://instagram.com/${textSocial}`
+      }
+      target="_blank"
+      rel="noopener noreferrer"
+      className="font-dm-sans font-normal text-xl text-text-fix p-0 m-0 underline hover:text-chart-2 transition-colors"
+      >
+      {textSocial}
+      </a>
      <p className='font-dm-sans font-normal text-sm text-text-fix'>send a message</p>
      </div>
     </Card>;
