@@ -9,12 +9,14 @@ export const PinContainer = ({
   href,
   className,
   containerClassName,
+  showOverlay = true,
 }: {
   children: React.ReactNode;
   title?: string;
   href?: string;
   className?: string;
   containerClassName?: string;
+  showOverlay?: boolean;
 }) => {
   const [transform, setTransform] = useState(
     "translate(-50%,-50%) rotateX(0deg)"
@@ -30,7 +32,7 @@ export const PinContainer = ({
   return (
     <a
       className={cn(
-        "relative group/pin z-50  cursor-pointer",
+        "relative group/pin z-50 cursor-pointer block",
         containerClassName
       )}
       onMouseEnter={onMouseEnter}
@@ -53,7 +55,7 @@ export const PinContainer = ({
           <div className={cn(" relative z-50 ", className)}>{children}</div>
         </div>
       </div>
-      <PinPerspective title={title} href={href} />
+      {showOverlay && <PinPerspective title={title} href={href} />}
     </a>
   );
 };

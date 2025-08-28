@@ -60,27 +60,32 @@ export function ContactPinCard({
 
   // Card inteiro é clicável via PinContainer (efeito 3D)
   return (
-    <PinContainer title={href.replace(/^https?:\/\//, "")} href={href}>
+    <PinContainer
+      title={href.replace(/^https?:\/\//, "")}
+      href={href}
+      showOverlay={false}
+      containerClassName="w-full max-w-[20rem] sm:max-w-[22rem] h-[9.5rem] sm:h-[10.5rem]"
+    >
       <div
-        className={`group relative w-[22rem] h-[8rem] p-4 rounded-3xl
+        className={`group relative w-full h-full p-3 sm:p-4 rounded-3xl
                     bg-primary text-text-fix shadow-lg flex flex-col
                     border-none ring-0
                     [&_*]:border-0 [&_*]:ring-0
                     ${className}`}
       >
         {/* Cabeçalho: ícone + título */}
-        <div className="flex items-center gap-3">
-          <div className="rounded-2xl p-3 bg-white/85">{icon}</div>
+        <div className="flex items-center gap-2.5">
+          <div className="rounded-2xl p-2.5 sm:p-3 bg-white/85">{icon}</div>
           <div className="min-w-0">
-            <h3 className="font-dm-sans font-bold text-lg leading-tight">
+            <h3 className="font-dm-sans font-bold text-base sm:text-lg leading-tight">
               {label}
             </h3>
-            <p className="text-sm text-text-fix/80 truncate">{shown}</p>
+            <p className="text-xs sm:text-sm text-text-fix/80 truncate">{shown}</p>
           </div>
         </div>
 
         {/* Subtítulo */}
-        <p className="mt-3 text-sm text-text-fix/80 truncate">{subtitle}</p>
+        <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-text-fix/80 truncate">{subtitle}</p>
 
         {/* CTA aparece no hover (mantendo paleta) */}
         <a

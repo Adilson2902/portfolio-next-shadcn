@@ -9,7 +9,6 @@ import { Globe, TrendingUp, BadgeCheck } from "lucide-react";
 type Project = {
   title: string;
   website: string;
-  github?: string;
   cover: string; // imagem do projeto (print/hero)
   description: string; // resumo de 1–2 linhas
   whatIDid: string[]; // bullets do que você fez
@@ -20,66 +19,54 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Landing de Clínica • Next.js + SEO",
-    website: "https://exemplo.com",
-    github: "https://github.com/adilson2902/clinica-landing",
+    title: "Estetico Masso • Plataforma de Agendamento",
+    website: "https://www.esteticomasso.com",
     cover:
       "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=1800&auto=format&fit=crop",
     description:
-      "Landing page focada em conversão com SEO técnico e Core Web Vitals verdes.",
+      "Plataforma voltada para esteticistas e profissionais da saúde, oferecendo serviços de massoterapia, agendamento de sessões e pacotes de serviços.",
     whatIDid: [
-      "Arquitetura Next.js com SSG + rotas limpas",
-      "Componente de FAQ + Schema (FAQPage)",
-      "Formulário integrado ao WhatsApp e e-mail",
+      "Desenvolvimento de plataforma com agendamento online.",
+      "Otimização para performance e acessibilidade com foco em SEO local.",
     ],
     impact: [
-      "↑ 57% nas conversões em 30 dias",
-      "LCP ~1.4s / CLS 0.01 (mobile)",
-      "Top 3 para 6 keywords locais",
+      "↑ 35% nas conversões de agendamentos.",
+      "Core Web Vitals otimizados para uma navegação ágil.",
+      "SEO focado nas regiões de Recife, Olinda e Jaboatão, com presença destacada nas buscas locais.",
     ],
-    stack: ["Next.js", "React", "Tailwind", "shadcn/ui", "Vercel"],
+    stack: ["Next.js", "React", "TailwindCSS", "SEO Local"],
     year: "2025",
   },
   {
-    title: "E-commerce Minimal • Checkout enxuto",
-    website: "https://loja-exemplo.com",
-    github: "https://github.com/adilson2902/ecommerce-minimal",
+    title: "ToolSpace • Conversores e Utilitários",
+    website: "https://www.toolspace.com.br",
     cover:
       "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1800&auto=format&fit=crop",
     description:
-      "Loja rápida, acessível e com rastreio de eventos para anúncios.",
+      "Ferramenta completa para conversões e utilitários de produtividade, com opções de conversão de arquivos e geração de QR Codes.",
     whatIDid: [
-      "Catálogo com filtros por tag e preço",
-      "Checkout simplificado + validações",
-      "GA4 + eventos de AddToCart/BeginCheckout",
+      "Implementação de múltiplos conversores de formatos de arquivo.",
+      "Integração de geração de QR Code e visualização de 3D.",
+      "Foco em uma UI responsiva e acessível para dispositivos móveis.",
     ],
     impact: [
-      "↑ 22% na taxa de compra",
-      "CWV > 90 (mobile/desktop)",
-      "Tempo de build/CI 35% menor",
+      "Tempo de resposta otimizado para menos de 500ms por requisição.",
+      "Crescimento de 50% no tráfego orgânico com SEO otimizado.",
     ],
-    stack: ["Next.js", "React", "Stripe (mock)", "Tailwind", "GA4"],
+    stack: ["Next.js", "TailwindCSS", "shadcn/ui", "Firebase", "WebGL"],
     year: "2025",
   },
   {
-    title: "App RN • Agenda de Serviços",
-    website: "https://expo.dev/@adilson/app-agenda",
-    github: "https://github.com/adilson2902/app-agenda",
+    title: "Futuriza • Soluções de Inteligência Artificial",
+    website: "https://www.futuriza.io",
     cover:
       "https://images.unsplash.com/photo-1512499617640-c2f999098c01?q=80&w=1800&auto=format&fit=crop",
-    description: "App React Native com login, agenda e notificações.",
-    whatIDid: [
-      "Stack RN + Expo + TypeScript",
-      "Auth + push notifications",
-      "Sincronização offline-first",
-    ],
-    impact: [
-      "↓ 40% no no-show com lembretes",
-      "Tempo médio de agendamento −25%",
-      "Crash-free sessions > 99.5%",
-    ],
-    stack: ["React Native", "Expo", "Firebase", "Zustand"],
-    year: "2024",
+    description:
+      "Plataforma inovadora com soluções para o mercado de inteligência artificial e automação de processos.",
+    whatIDid: ["Design responsivo com foco em escalabilidade."],
+    impact: ["Melhor visualização de todos os processos e produtos"],
+    stack: ["React", "Next.js", "Tailwind"],
+    year: "2025",
   },
 ];
 

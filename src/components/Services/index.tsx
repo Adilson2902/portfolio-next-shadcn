@@ -2,6 +2,7 @@
 
 import React from "react";
 import { FocusCards } from "@/components/ui/focus-cards";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import {
   CheckCircle2,
   Gauge,
@@ -9,33 +10,51 @@ import {
   ShieldCheck,
   BarChart3,
   Workflow,
+  Globe,
+  ShoppingCart,
+  Target,
+  Smartphone,
+  LayoutDashboard,
+  Zap,
 } from "lucide-react";
 
 export default function Services() {
   const cards = [
     {
       title: "Site institucional Next.js — rápido e indexável",
-      src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=3000&auto=format&fit=crop",
+      icon: <Globe className="h-8 w-8" />,
+      backgroundClassName:
+        "bg-gradient-to-br from-indigo-500/20 via-sky-400/10 to-transparent dark:from-indigo-500/25 dark:via-sky-400/15",
     },
     {
       title: "Loja virtual — checkout enxuto que converte",
-      src: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=3000&auto=format&fit=crop",
+      icon: <ShoppingCart className="h-8 w-8" />,
+      backgroundClassName:
+        "bg-gradient-to-br from-emerald-500/20 via-teal-400/10 to-transparent dark:from-emerald-500/25 dark:via-teal-400/15",
     },
     {
       title: "Landing de campanha — CRO + testes A/B",
-      src: "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=3000&auto=format&fit=crop",
+      icon: <Target className="h-8 w-8" />,
+      backgroundClassName:
+        "bg-gradient-to-br from-pink-500/20 via-rose-400/10 to-transparent dark:from-pink-500/25 dark:via-rose-400/15",
     },
     {
       title: "App mobile React Native — iOS e Android",
-      src: "https://images.unsplash.com/photo-1512499617640-c2f999098c01?q=80&w=3000&auto=format&fit=crop",
+      icon: <Smartphone className="h-8 w-8" />,
+      backgroundClassName:
+        "bg-gradient-to-br from-violet-500/20 via-fuchsia-400/10 to-transparent dark:from-violet-500/25 dark:via-fuchsia-400/15",
     },
     {
-      title: "Dashboard/Admin — auth, RBAC e tabelas pro",
-      src: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=3000&auto=format&fit=crop",
+      title: "Dashboard/Admin — auth, RBAC e tabelas pró",
+      icon: <LayoutDashboard className="h-8 w-8" />,
+      backgroundClassName:
+        "bg-gradient-to-br from-amber-500/20 via-orange-400/10 to-transparent dark:from-amber-500/25 dark:via-orange-400/15",
     },
     {
       title: "Otimização de performance — Core Web Vitals",
-      src: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=3000&auto=format&fit=crop",
+      icon: <Zap className="h-8 w-8" />,
+      backgroundClassName:
+        "bg-gradient-to-br from-cyan-500/20 via-blue-400/10 to-transparent dark:from-cyan-500/25 dark:via-blue-400/15",
     },
   ];
 
@@ -86,21 +105,31 @@ export default function Services() {
         <h3 className="text-xl font-semibold mb-4">
           O que você recebe em qualquer projeto
         </h3>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
           {items.map((it, i) => (
-            <li
-              key={i}
-              className="rounded-2xl p-4 bg-primary/40 dark:bg-white/5 ring-1 ring-black/5 dark:ring-white/10 backdrop-blur"
-            >
-              <div className="flex items-start gap-3">
-                <div className="shrink-0 rounded-lg p-2 bg-primary/10 text-primary">
-                  {it.icon}
-                </div>
-                <div>
-                  <p className="font-medium">{it.label}</p>
-                  <p className="text-sm text-muted-foreground">{it.desc}</p>
-                </div>
-              </div>
+            <li key={i} className="flex justify-center w-full">
+              <CardContainer containerClassName="py-0 w-full">
+                <CardBody className="group/card w-52 sm:w-60 h-28 sm:h-32 rounded-xl p-3 border border-primary/40 bg-primary text-primary-foreground shadow-sm">
+                  <div className="flex items-center gap-3">
+                    <CardItem
+                      translateZ={100}
+                      className="shrink-0 rounded-lg p-2 bg-white/15 text-primary-foreground"
+                    >
+                      {it.icon}
+                    </CardItem>
+                    <CardItem translateZ={70} className="font-medium">
+                      {it.label}
+                    </CardItem>
+                  </div>
+                  <CardItem
+                    as="p"
+                    translateZ={50}
+                    className="mt-3 text-sm text-primary-foreground/80 leading-snug"
+                  >
+                    {it.desc}
+                  </CardItem>
+                </CardBody>
+              </CardContainer>
             </li>
           ))}
         </ul>
