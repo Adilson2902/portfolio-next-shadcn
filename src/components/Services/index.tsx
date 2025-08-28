@@ -93,7 +93,7 @@ export default function Services() {
 
   return (
     <section id="services" className="w-full flex flex-col items-center">
-      <h2 className="text-3xl font-bold mb-10 text-primary">Serviços</h2>
+      <h2 className="text-3xl font-bold mb-10 mt-10 text-primary">Serviços</h2>
 
       {/* Cards focados no produto/resultado (sem repetir a promessa da Home) */}
       <div className="w-full">
@@ -101,8 +101,8 @@ export default function Services() {
       </div>
 
       {/* O que você recebe (evita repetir copy da Home) */}
-      <div className="mt-10 w-full max-w-5xl px-4">
-        <h3 className="text-xl font-semibold mb-4">
+      <div id="win" className="mt-20 w-full max-w-5xl px-4">
+        <h3 className="text-xl text-primary font-semibold mb-10">
           O que você recebe em qualquer projeto
         </h3>
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">

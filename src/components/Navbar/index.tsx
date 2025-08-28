@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import { FloatingDock } from "@/components/ui/floating-dock";
-import { Home, User2, Briefcase, Code2, Mail } from "lucide-react";
+import { Home, Briefcase, Code2, Mail } from "lucide-react";
 
 /**
  * Navbar moderna no estilo "Floating Dock" (Aceternity),
@@ -59,19 +59,14 @@ export function Navbar() {
         icon: <Home className={iconClass(active === "home")} />,
       },
       {
-        title: "Sobre",
-        href: "#about",
-        icon: <User2 className={iconClass(active === "about")} />,
+        title: "Serviços",
+        href: "#services",
+        icon: <Briefcase className={iconClass(active === "services")} />,
       },
       {
-        title: "Projetos",
-        href: "#projects",
-        icon: <Briefcase className={iconClass(active === "projects")} />,
-      },
-      {
-        title: "Stack",
-        href: "#stack",
-        icon: <Code2 className={iconClass(active === "stack")} />,
+        title: "Ganhos",
+        href: "#win",
+        icon: <Code2 className={iconClass(active === "win")} />,
       },
       {
         title: "Contato",

@@ -20,9 +20,9 @@ type Project = {
 const projects: Project[] = [
   {
     title: "Estetico Masso • Plataforma de Agendamento",
-    website: "https://www.esteticomasso.com",
+    website: "https://www.esteticomasso.com.br",
     cover:
-      "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?q=80&w=1800&auto=format&fit=crop",
+      "https://www.esteticomasso.com.br/_next/image?url=%2Fassets%2Fhome.png&q=75&w=1920",
     description:
       "Plataforma voltada para esteticistas e profissionais da saúde, oferecendo serviços de massoterapia, agendamento de sessões e pacotes de serviços.",
     whatIDid: [
@@ -40,8 +40,7 @@ const projects: Project[] = [
   {
     title: "ToolSpace • Conversores e Utilitários",
     website: "https://www.toolspace.com.br",
-    cover:
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1800&auto=format&fit=crop",
+    cover: "https://www.toolspace.com.br/image.png",
     description:
       "Ferramenta completa para conversões e utilitários de produtividade, com opções de conversão de arquivos e geração de QR Codes.",
     whatIDid: [
@@ -58,9 +57,8 @@ const projects: Project[] = [
   },
   {
     title: "Futuriza • Soluções de Inteligência Artificial",
-    website: "https://www.futuriza.io",
-    cover:
-      "https://images.unsplash.com/photo-1512499617640-c2f999098c01?q=80&w=1800&auto=format&fit=crop",
+    website: "https://futuriza.io",
+    cover: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Ffuturiza.io?w=1600",
     description:
       "Plataforma inovadora com soluções para o mercado de inteligência artificial e automação de processos.",
     whatIDid: ["Design responsivo com foco em escalabilidade."],
