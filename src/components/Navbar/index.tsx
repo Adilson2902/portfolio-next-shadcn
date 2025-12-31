@@ -88,12 +88,10 @@ export function Navbar() {
     >
       <div className="pointer-events-auto">
         <FloatingDock
-          // mantém o dock flutuante no mobile sem empurrar layout
-          mobileClassName=""
-          // classes extras para acabamento (vidro + leve sombra)
+          mobileClassName="glass-effect border border-purple-500/30"
           desktopClassName="
-            backdrop-blur-md bg-primary/70 dark:bg-black/50
-            shadow-lg
+            glass-effect border border-purple-500/30
+            shadow-lg shadow-purple-500/20 neon-glow
           "
           items={links}
         />

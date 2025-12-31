@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-
+import { motion } from "motion/react";
+import Image from "next/image";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
-import { LinkPreview } from "@/components/ui/link-preview";
-import { Globe, TrendingUp, BadgeCheck } from "lucide-react";
+import { Globe, TrendingUp, BadgeCheck, ExternalLink } from "lucide-react";
 
 type Project = {
   title: string;
@@ -70,80 +70,100 @@ const projects: Project[] = [
 
 function ProjectSpotlightCard(p: Project) {
   return (
-    <CardSpotlight className="h-auto w-full max-w-[32rem] overflow-hidden">
-      {/* COVER */}
-      <div className="relative z-20">
-        <img
+    <CardSpotlight className="h-auto w-full max-w-[32rem] overflow-hidden group modern-hover">
+      {/* COVER com overlay gradiente */}
+      <div className="relative z-20 overflow-hidden rounded-2xl h-48">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+        <Image
           src={p.cover}
           alt={`${p.title} — captura do projeto`}
-          className="w-full h-40 object-cover rounded-xl"
-          loading="lazy"
+          fill
+          className="object-cover transform group-hover:scale-110 transition-transform duration-500"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
+        {/* Badge de ano flutuante */}
+        {p.year && (
+          <div className="absolute top-4 right-4 z-20 glass-effect px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md">
+            {p.year}
+          </div>
+        )}
       </div>
 
       {/* TÍTULO + LINK PREVIEW */}
-      <div className="relative z-20 mt-4">
-        <h3 className="text-xl font-bold text-white">{p.title}</h3>
-        <div className="mt-1 flex items-center gap-3 text-neutral-300">
+      <div className="relative z-20 mt-6">
+        <h3 className="text-2xl font-bold text-white mb-3 gradient-text">{p.title}</h3>
+        <a
+          href={p.website}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors font-medium group/link"
+        >
           <Globe className="h-4 w-4" />
-          <LinkPreview
-            url={p.website}
-            className="font-medium underline underline-offset-4 z-[9999]"
-          >
-            Visitar site
-          </LinkPreview>
-
-          {p.year && (
-            <>
-              <span className="opacity-50">•</span>
-              <span className="text-neutral-400">{p.year}</span>
-            </>
-          )}
-        </div>
+          <span className="underline underline-offset-4">Visitar site</span>
+          <ExternalLink className="h-3 w-3 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+        </a>
       </div>
 
       {/* DESCRIÇÃO */}
-      <p className="relative z-20 mt-3 text-neutral-200">{p.description}</p>
+      <p className="relative z-20 mt-4 text-gray-300 leading-relaxed">{p.description}</p>
 
       {/* O QUE EU FIZ */}
-      <div className="relative z-20 mt-4">
-        <p className="text-neutral-300 text-sm mb-2 inline-flex items-center gap-2">
-          <BadgeCheck className="h-4 w-4 text-blue-400" />O que eu fiz
-        </p>
-        <ul className="grid grid-cols-1 gap-1 list-disc pl-5 text-white/90">
+      <div className="relative z-20 mt-6">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+            <BadgeCheck className="h-5 w-5 text-white" />
+          </div>
+          <p className="text-white font-semibold">O que eu fiz</p>
+        </div>
+        <ul className="space-y-2">
           {p.whatIDid.map((w, i) => (
-            <li key={i} className="marker:text-blue-400">
-              {w}
+            <li key={i} className="flex items-start gap-3 text-gray-300">
+              <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 mt-2 shrink-0"></div>
+              <span>{w}</span>
             </li>
           ))}
         </ul>
       </div>
 
       {/* IMPACTO / RESULTADOS */}
-      <div className="relative z-20 mt-4">
-        <p className="text-neutral-300 text-sm mb-2 inline-flex items-center gap-2">
-          <TrendingUp className="h-4 w-4 text-emerald-400" />
-          Impacto na carreira/projeto
-        </p>
-        <ul className="grid grid-cols-1 gap-1 list-disc pl-5 text-white/90">
+      <div className="relative z-20 mt-6">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
+            <TrendingUp className="h-5 w-5 text-white" />
+          </div>
+          <p className="text-white font-semibold">Impacto e Resultados</p>
+        </div>
+        <ul className="space-y-2">
           {p.impact.map((w, i) => (
-            <li key={i} className="marker:text-emerald-400">
-              {w}
+            <li key={i} className="flex items-start gap-3 text-gray-300">
+              <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-400 mt-2 shrink-0"></div>
+              <span>{w}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      {/* STACK TAGS */}
-      <div className="relative z-20 mt-4 flex flex-wrap gap-2">
-        {p.stack.map((t) => (
-          <span
-            key={t}
-            className="rounded-full px-3 py-1 text-xs bg-white/10 text-white/90 ring-1 ring-white/15"
-          >
-            {t}
-          </span>
-        ))}
+      {/* STACK TAGS com gradientes */}
+      <div className="relative z-20 mt-6 flex flex-wrap gap-2">
+        {p.stack.map((t, idx) => {
+          const gradients = [
+            "from-purple-500 to-violet-500",
+            "from-pink-500 to-rose-500",
+            "from-cyan-500 to-blue-500",
+            "from-emerald-500 to-teal-500",
+            "from-amber-500 to-orange-500",
+          ];
+          const gradient = gradients[idx % gradients.length];
+          
+          return (
+            <span
+              key={t}
+              className={`rounded-full px-4 py-2 text-xs font-semibold bg-gradient-to-r ${gradient} text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}
+            >
+              {t}
+            </span>
+          );
+        })}
       </div>
     </CardSpotlight>
   );
@@ -153,15 +173,38 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="py-20 px-4 w-full flex flex-col items-center"
+      className="relative py-24 px-4 w-full flex flex-col items-center overflow-hidden"
     >
-      <h2 className="text-3xl font-bold mb-8 text-primary text-center">
-        Projetos
-      </h2>
+      {/* Gradientes de fundo */}
+      <div className="absolute top-20 left-10 w-96 h-96 bg-purple-500/10 rounded-full blur-[120px]"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px]"></div>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="relative z-10 mb-12"
+      >
+        <h2 className="text-4xl sm:text-5xl font-bold mb-4 gradient-text text-center">
+          Projetos
+        </h2>
+        <p className="text-gray-400 text-center max-w-2xl mx-auto">
+          Trabalhos recentes que demonstram minha expertise em desenvolvimento front-end
+        </p>
+      </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-        {projects.map((p) => (
-          <ProjectSpotlightCard key={p.title} {...p} />
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl">
+        {projects.map((p, idx) => (
+          <motion.div
+            key={p.title}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: idx * 0.15 }}
+          >
+            <ProjectSpotlightCard {...p} />
+          </motion.div>
         ))}
       </div>
     </section>

@@ -49,45 +49,45 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.75rem;
 
-  /* Fundo geral: azul escuro */
-  --background: oklch(0.26 0.05 230); /* Azul escuro */
-  --foreground: oklch(0.95 0.01 230); /* Quase branco */
+  /* Background com gradiente moderno */
+  --background: #0a0118;
+  --foreground: #ffffff;
 
-  /* Cartões e popovers */
-  --card: var(--background);
-  --card-foreground: var(--foreground);
-  --popover: var(--background);
-  --popover-foreground: var(--foreground);
+  /* Cards com efeito glassmorphism */
+  --card: rgba(17, 24, 39, 0.7);
+  --card-foreground: #ffffff;
+  --popover: rgba(17, 24, 39, 0.95);
+  --popover-foreground: #ffffff;
 
-  /* Azul-ciano vibrante */
-  --primary: oklch(0.75 0.25 230);
-  --primary-foreground: oklch(1 0 0);
+  /* Cores primárias com gradiente vibrante */
+  --primary: #8b5cf6;
+  --primary-foreground: #ffffff;
 
-  /* Azul claro para botões e destaques */
-  --secondary: oklch(0.8 0.15 230);
-  --secondary-foreground: oklch(1 0 0);
+  /* Secundário com tom complementar */
+  --secondary: #ec4899;
+  --secondary-foreground: #ffffff;
 
-  /* Tons suaves de apoio */
-  --muted: oklch(0.7 0.05 230);
-  --muted-foreground: oklch(0.95 0.01 230);
+  /* Tons suaves */
+  --muted: rgba(107, 114, 128, 0.3);
+  --muted-foreground: #d1d5db;
 
-  --accent: var(--primary);
-  --accent-foreground: var(--primary-foreground);
+  --accent: #06b6d4;
+  --accent-foreground: #ffffff;
 
-  /* Erros e alertas */
-  --destructive: oklch(0.55 0.25 27); /* Vermelho vibrante */
-  --border: oklch(0.3 0.04 230);
-  --input: oklch(0.3 0.04 230);
-  --ring: oklch(0.75 0.25 230);
+  /* Destructive */
+  --destructive: #ef4444;
+  --border: rgba(139, 92, 246, 0.2);
+  --input: rgba(139, 92, 246, 0.1);
+  --ring: #8b5cf6;
 
-  /* Extras se estiver usando gráficos */
-  --chart-1: oklch(0.7 0.22 41);
-  --chart-2: oklch(0.65 0.12 184);
-  --chart-3: oklch(0.5 0.07 227);
-  --chart-4: oklch(0.8 0.19 84);
-  --chart-5: oklch(0.76 0.18 70);
+  /* Charts */
+  --chart-1: #8b5cf6;
+  --chart-2: #ec4899;
+  --chart-3: #06b6d4;
+  --chart-4: #f59e0b;
+  --chart-5: #10b981;
 
   /* Sidebar */
   --sidebar: var(--background);
@@ -98,7 +98,7 @@
   --sidebar-accent-foreground: var(--secondary-foreground);
   --sidebar-border: var(--border);
   --sidebar-ring: var(--ring);
-  --text-fix: #00242C;
+  --text-fix: #0a0118;
   
 }
 
@@ -140,7 +140,174 @@
   * {
     @apply border-border outline-ring/50;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Esconder cursor customizado no mobile */
+  @media (max-width: 768px) {
+    .cursor-none {
+      cursor: auto !important;
+    }
+  }
+  
   body {
     @apply bg-background text-foreground;
+    background: linear-gradient(135deg, #0a0118 0%, #1a0b2e 25%, #16213e 50%, #0f0f23 75%, #0a0118 100%);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+    position: relative;
+    overflow-x: hidden;
   }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  /* Estilo personalizado para scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(10, 1, 24, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #8b5cf6, #ec4899);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #a78bfa, #f472b6);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Animação de float para elementos 3D */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(-20px) translateX(0px);
+  }
+  75% {
+    transform: translateY(-10px) translateX(-5px);
+  }
+}
+
+.animate-float {
+  animation: float 10s ease-in-out infinite;
+}
+
+/* Gradiente de texto animado */
+@keyframes gradient-text {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899, #06b6d4, #8b5cf6);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-text 3s ease infinite;
+}
+
+/* Efeito glassmorphism para cards */
+.glass-effect {
+  background: rgba(17, 24, 39, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.15);
+}
+
+/* Brilho neon */
+.neon-glow {
+  box-shadow: 
+    0 0 10px rgba(139, 92, 246, 0.5),
+    0 0 20px rgba(139, 92, 246, 0.3),
+    0 0 30px rgba(139, 92, 246, 0.1);
+}
+
+/* Hover effect moderno */
+.modern-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+}
+
+/* Animação de pulse suave */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Efeito de brilho ao passar o mouse */
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.shine-effect:hover::before {
+  left: 100%;
+}
+
+/* Efeito de texto brilhante */
+.glow-text {
+  text-shadow: 
+    0 0 10px rgba(139, 92, 246, 0.5),
+    0 0 20px rgba(139, 92, 246, 0.3),
+    0 0 30px rgba(139, 92, 246, 0.1);
 }

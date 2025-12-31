@@ -2,14 +2,35 @@
 
 import Image from "next/image";
 import ColourfulText from "@/components/ui/colourful-text";
-import { cn } from "@/lib/utils"; // se não tiver, troque por uma simples concatenação
+import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
+import { Sparkles, Code2, Zap } from "lucide-react";
 
 export function Hero() {
   return (
-    <section id="home" className="bg-background pt-16 sm:pt-24 text-center">
-      <div className="container mx-auto max-w-5xl px-4">
+    <section id="home" className="relative pt-16 sm:pt-24 pb-12 text-center overflow-hidden">
+      {/* Orbes de gradiente animados */}
+      <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/30 rounded-full blur-[100px] animate-pulse"></div>
+      <div className="absolute top-40 right-10 w-96 h-96 bg-pink-500/20 rounded-full blur-[120px] animate-pulse delay-1000"></div>
+      <div className="absolute bottom-0 left-1/2 w-80 h-80 bg-cyan-500/20 rounded-full blur-[100px] animate-pulse delay-500"></div>
+      
+      <div className="container relative z-10 mx-auto max-w-6xl px-4">
+        {/* Badge superior animado */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full glass-effect border border-purple-500/30"
+        >
+          <Sparkles className="w-4 h-4 text-purple-400" />
+          <span className="text-sm font-medium gradient-text">Desenvolvedor Front-end Moderno</span>
+        </motion.div>
+
         <div className="relative mx-auto mb-8 sm:mb-10 grid place-items-center">
-          <div className="relative size-[200px] sm:size-[260px] md:size-[320px] xl:size-[360px]">
+          <div className="relative size-[220px] sm:size-[280px] md:size-[340px] xl:size-[380px]">
+            {/* Anel de gradiente */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 opacity-20 blur-xl animate-pulse"></div>
+            
             {/* Círculo de ícones */}
             <div
               className={cn(
@@ -24,9 +45,15 @@ export function Hero() {
               ))}
             </div>
 
-            {/* Foto retangular, recorte leve nas laterais e borda colada */}
-            <div className="relative z-10 mx-auto grid place-items-center translate-y-4 sm:translate-y-6 md:translate-y-10">
+            {/* Foto com borda gradiente */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative z-10 mx-auto grid place-items-center translate-y-4 sm:translate-y-6 md:translate-y-10"
+            >
               <div className="relative w-[60%] sm:w-[56%] md:w-[52%] lg:w-[48%]">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-500 blur-md opacity-60"></div>
                 <div
                   className="
         relative aspect-[3/4]
@@ -34,8 +61,7 @@ export function Hero() {
         [--cropY:0%]
       "
                 >
-                  {/* área recortada onde a imagem fica */}
-                  <div className="absolute inset-0 [clip-path:inset(var(--cropY)_var(--cropX)_var(--cropY)_var(--cropX))] overflow-hidden">
+                  <div className="absolute inset-0 [clip-path:inset(var(--cropY)_var(--cropX)_var(--cropY)_var(--cropX))] overflow-hidden rounded-2xl ring-2 ring-purple-500/50">
                     <Image
                       src="/home.png"
                       alt="Adilson — Desenvolvedor Front-end"
@@ -52,34 +78,70 @@ export function Hero() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
 
-        {/* Título principal */}
-        <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold font-space-grotesk mb-3 text-primary tracking-tight">
-          Adilson — Desenvolvedor Front-end
-        </h1>
+        {/* Título principal com gradiente */}
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-space-grotesk mb-4 tracking-tight"
+        >
+          <span className="gradient-text">Adilson</span>
+          <br />
+          <span className="text-white">Desenvolvedor Front-end</span>
+        </motion.h1>
 
-        {/* Stack SEM QUEBRA DE LINHA (reduz tamanho no mobile para não estourar) */}
-        <p className="text-xl sm:text-3xl md:text-5xl font-space-grotesk mb-4 leading-tight tracking-tight">
-          <span className="inline-block whitespace-nowrap">
-            <ColourfulText
-              text={"React\u00A0•\u00A0Next.js\u00A0•\u00A0React\u00A0Native"}
-            />
-          </span>
-        </p>
+        {/* Stack com animação */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-space-grotesk mb-6 leading-tight tracking-tight"
+        >
+          <ColourfulText
+            text={"React • Next.js • React Native"}
+          />
+        </motion.div>
 
-        {/* Subtítulo com palavras-chave naturais */}
-        <p className="text-muted-foreground text-sm sm:text-base md:text-lg mb-6 font-space-grotesk mx-auto max-w-2xl">
-          Desenvolvo <strong>sites</strong> e <strong>aplicativos</strong> com{" "}
-          <strong>SEO técnico</strong>, <strong>SSR/SSG</strong>,{" "}
-          <strong>Core Web Vitals</strong> e design responsivo. Trabalho com{" "}
-          <strong>Tailwind</strong>/<strong>shadcn/ui</strong>, animações em{" "}
-          <strong>Framer Motion</strong> e publicações em{" "}
-          <strong>React Native</strong> para iOS e Android — foco em performance
+        {/* Cards de destaque */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="flex flex-wrap justify-center gap-4 mb-8"
+        >
+          <div className="glass-effect px-6 py-3 rounded-xl flex items-center gap-2 modern-hover">
+            <Code2 className="w-5 h-5 text-purple-400" />
+            <span className="text-sm font-medium">TypeScript Expert</span>
+          </div>
+          <div className="glass-effect px-6 py-3 rounded-xl flex items-center gap-2 modern-hover">
+            <Zap className="w-5 h-5 text-cyan-400" />
+            <span className="text-sm font-medium">Performance Focused</span>
+          </div>
+          <div className="glass-effect px-6 py-3 rounded-xl flex items-center gap-2 modern-hover">
+            <Sparkles className="w-5 h-5 text-pink-400" />
+            <span className="text-sm font-medium">3D Animations</span>
+          </div>
+        </motion.div>
+
+        {/* Subtítulo moderno */}
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1 }}
+          className="text-gray-300 text-sm sm:text-base md:text-lg mb-8 font-dm-sans mx-auto max-w-3xl leading-relaxed"
+        >
+          Desenvolvo <span className="text-purple-400 font-semibold">sites</span> e <span className="text-pink-400 font-semibold">aplicativos</span> com{" "}
+          <span className="text-cyan-400 font-semibold">SEO técnico</span>, <span className="text-purple-400 font-semibold">SSR/SSG</span>,{" "}
+          <span className="text-pink-400 font-semibold">Core Web Vitals</span> e design responsivo. Trabalho com{" "}
+          <span className="text-cyan-400 font-semibold">Tailwind</span>/<span className="text-purple-400 font-semibold">shadcn/ui</span>, animações em{" "}
+          <span className="text-pink-400 font-semibold">Framer Motion</span> e publicações em{" "}
+          <span className="text-cyan-400 font-semibold">React Native</span> para iOS e Android — foco em performance
           e conversão.
-        </p>
+        </motion.p>
       </div>
     </section>
   );
