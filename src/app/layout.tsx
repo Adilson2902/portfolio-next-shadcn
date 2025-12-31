@@ -6,6 +6,9 @@ import { AnimatedBackground } from "../components/ui/animated-background";
 import { BackToTop } from "../components/ui/back-to-top";
 import { CustomCursor } from "../components/ui/custom-cursor";
 import { LoadingScreen } from "../components/ui/loading-screen";
+import { ScrollProgress } from "../components/ui/scroll-progress";
+import { ThemeProvider } from "../components/ThemeProvider";
+import { Toaster } from "@/components/ui/sonner";
 import { DM_Sans } from 'next/font/google';
 
 const dmSans = DM_Sans({
@@ -38,11 +41,34 @@ export const metadata: Metadata = {
   keywords: ["desenvolvedor front-end", "React", "Next.js", "React Native", "TypeScript", "Tailwind CSS", "SEO", "Performance"],
   authors: [{ name: "Adilson" }],
   creator: "Adilson",
+  metadataBase: new URL('https://seudominio.com'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: "website",
     locale: "pt_BR",
+    url: "https://seudominio.com",
     title: "Adilson - Desenvolvedor Front-end",
     description: "Portfólio profissional com projetos modernos em React, Next.js e React Native",
+    siteName: "Adilson Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Adilson - Desenvolvedor Front-end",
+    description: "Portfólio profissional com projetos modernos em React, Next.js e React Native",
+    creator: "@seutwitter",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
@@ -52,22 +78,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"></link>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#8b5cf6" />
+        <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
       
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} ${dmSans.variable} antialiased cursor-none`}
       >
-        <LoadingScreen />
-        <CustomCursor />
-        <AnimatedBackground />
-        <Navbar />
-        <BackToTop />
-        <main className="relative z-10">
-          {children}
-        </main>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <LoadingScreen />
+          <CustomCursor />
+          <ScrollProgress />
+          <AnimatedBackground />
+          <Navbar />
+          <BackToTop />
+          <main className="relative z-10">
+            {children}
+          </main>
+          <Toaster position="top-right" richColors />
+        </ThemeProvider>
       </body>
     </html>
   );
