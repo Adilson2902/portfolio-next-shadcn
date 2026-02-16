@@ -2,15 +2,10 @@ import Contact from "@/components/Contact";
 import { Hero } from "../components/Hero";
 import Services from "@/components/Services";
 import { Skills } from "@/components/Skills";
-import { Stats } from "@/components/Stats";
 import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
-import Testimonials from "@/components/Testimonials";
 import Timeline from "@/components/Timeline";
-import Certificates from "@/components/Certificates";
-import Newsletter from "@/components/Newsletter";
 import FAQ from "@/components/FAQ";
-import ImageGallery from "@/components/ImageGallery";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
@@ -28,8 +23,6 @@ export default function Home() {
 
       <Hero />
       <SectionDivider />
-      <Stats />
-      <SectionDivider />
       <Services />
       <SectionDivider />
       <Skills />
@@ -38,15 +31,7 @@ export default function Home() {
       <SectionDivider />
       <Projects />
       <SectionDivider />
-      <Certificates />
-      <SectionDivider />
-      <Testimonials />
-      <SectionDivider />
-      <ImageGallery />
-      <SectionDivider />
       <FAQ />
-      <SectionDivider />
-      <Newsletter />
       <SectionDivider />
       <Contact />
       <SectionDivider />

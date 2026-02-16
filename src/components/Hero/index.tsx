@@ -134,14 +134,36 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 1 }}
           className="text-gray-300 text-sm sm:text-base md:text-lg mb-8 font-dm-sans mx-auto max-w-3xl leading-relaxed"
         >
-          Desenvolvo <span className="text-purple-400 font-semibold">sites</span> e <span className="text-pink-400 font-semibold">aplicativos</span> com{" "}
-          <span className="text-cyan-400 font-semibold">SEO técnico</span>, <span className="text-purple-400 font-semibold">SSR/SSG</span>,{" "}
-          <span className="text-pink-400 font-semibold">Core Web Vitals</span> e design responsivo. Trabalho com{" "}
-          <span className="text-cyan-400 font-semibold">Tailwind</span>/<span className="text-purple-400 font-semibold">shadcn/ui</span>, animações em{" "}
-          <span className="text-pink-400 font-semibold">Framer Motion</span> e publicações em{" "}
-          <span className="text-cyan-400 font-semibold">React Native</span> para iOS e Android — foco em performance
-          e conversão.
+          <span className="text-purple-400 font-semibold">4 anos</span> de experiência com{" "}
+          <span className="text-pink-400 font-semibold">React</span> e{" "}
+          <span className="text-cyan-400 font-semibold">React Native</span>, e{" "}
+          <span className="text-purple-400 font-semibold">2 anos</span> com{" "}
+          <span className="text-pink-400 font-semibold">Next.js</span> e{" "}
+          <span className="text-cyan-400 font-semibold">Tailwind CSS</span>. Desenvolvo sites e apps com{" "}
+          <span className="text-purple-400 font-semibold">SEO técnico</span>,{" "}
+          <span className="text-pink-400 font-semibold">SSR/SSG</span>,{" "}
+          <span className="text-cyan-400 font-semibold">Core Web Vitals</span> e design responsivo — foco em performance e conversão.
         </motion.p>
+
+        {/* LinkedIn */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+          className="flex justify-center"
+        >
+          <a
+            href="https://www.linkedin.com/in/adilson-adriano"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glass-effect px-6 py-3 rounded-xl flex items-center gap-3 modern-hover border border-purple-500/30 hover:border-purple-500/60 transition-all group"
+          >
+            <svg className="w-5 h-5 text-purple-400 group-hover:text-purple-300 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <span className="font-medium">LinkedIn</span>
+          </a>
+        </motion.div>
       </div>
     </section>
   );

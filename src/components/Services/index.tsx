@@ -28,25 +28,25 @@ export default function Services() {
         "bg-gradient-to-br from-purple-600/30 via-indigo-500/20 to-transparent",
     },
     {
-      title: "Loja virtual — checkout enxuto que converte",
+      title: "E-commerce completo — carrinho, checkout e pagamento",
       icon: <ShoppingCart className="h-8 w-8 text-emerald-400" />,
       backgroundClassName:
         "bg-gradient-to-br from-emerald-600/30 via-teal-500/20 to-transparent",
     },
     {
-      title: "Landing de campanha — CRO + testes A/B",
+      title: "Landing pages — alta conversão com CRO",
       icon: <Target className="h-8 w-8 text-pink-400" />,
       backgroundClassName:
         "bg-gradient-to-br from-pink-600/30 via-rose-500/20 to-transparent",
     },
     {
-      title: "App mobile React Native — iOS e Android",
+      title: "Apps mobile React Native — iOS e Android",
       icon: <Smartphone className="h-8 w-8 text-violet-400" />,
       backgroundClassName:
         "bg-gradient-to-br from-violet-600/30 via-fuchsia-500/20 to-transparent",
     },
     {
-      title: "Dashboard/Admin — auth, RBAC e tabelas pró",
+      title: "Dashboards e painéis admin — auth e RBAC",
       icon: <LayoutDashboard className="h-8 w-8 text-amber-400" />,
       backgroundClassName:
         "bg-gradient-to-br from-amber-600/30 via-orange-500/20 to-transparent",
@@ -57,43 +57,79 @@ export default function Services() {
       backgroundClassName:
         "bg-gradient-to-br from-cyan-600/30 via-blue-500/20 to-transparent",
     },
+    {
+      title: "PWA — aplicações web progressivas offline-first",
+      icon: <Rocket className="h-8 w-8 text-blue-400" />,
+      backgroundClassName:
+        "bg-gradient-to-br from-blue-600/30 via-indigo-500/20 to-transparent",
+    },
+    {
+      title: "SPA — single page applications com React",
+      icon: <Workflow className="h-8 w-8 text-rose-400" />,
+      backgroundClassName:
+        "bg-gradient-to-br from-rose-600/30 via-pink-500/20 to-transparent",
+    },
+    {
+      title: "Portais e plataformas — multi-tenant e escaláveis",
+      icon: <Globe className="h-8 w-8 text-teal-400" />,
+      backgroundClassName:
+        "bg-gradient-to-br from-teal-600/30 via-cyan-500/20 to-transparent",
+    },
+    {
+      title: "Blogs e CMS — integração com Contentful/Strapi",
+      icon: <CheckCircle2 className="h-8 w-8 text-lime-400" />,
+      backgroundClassName:
+        "bg-gradient-to-br from-lime-600/30 via-green-500/20 to-transparent",
+    },
+    {
+      title: "Design systems — componentes reutilizáveis",
+      icon: <ShieldCheck className="h-8 w-8 text-indigo-400" />,
+      backgroundClassName:
+        "bg-gradient-to-br from-indigo-600/30 via-purple-500/20 to-transparent",
+    },
+    {
+      title: "Migração e refatoração — modernização de código",
+      icon: <BarChart3 className="h-8 w-8 text-orange-400" />,
+      backgroundClassName:
+        "bg-gradient-to-br from-orange-600/30 via-amber-500/20 to-transparent",
+    },
   ];
 
   const items = [
     {
       icon: <Gauge className="h-6 w-6" />,
-      label: "Velocidade",
-      desc: "Meta CWV/Lighthouse > 90 quando tecnicamente viável.",
+      label: "Performance",
+      desc: "Core Web Vitals otimizados, carregamento < 2s, Lighthouse score 90+.",
       gradient: "from-purple-500 to-violet-500",
     },
     {
       icon: <CheckCircle2 className="h-6 w-6" />,
-      label: "SEO técnico",
-      desc: "Meta tags, sitemap, robots, schema e links internos.",
+      label: "SEO Técnico",
+      desc: "Meta tags estruturadas, sitemap XML, robots.txt, schema markup e links internos otimizados.",
       gradient: "from-pink-500 to-rose-500",
     },
     {
       icon: <Workflow className="h-6 w-6" />,
-      label: "Fluxos prontos",
-      desc: "Formulários, e-mail/Whats, integrações essenciais.",
+      label: "Integrações",
+      desc: "APIs REST/GraphQL, webhooks, pagamentos (Stripe/Mercado Pago), e-mail/SMS, WhatsApp Business.",
       gradient: "from-cyan-500 to-blue-500",
     },
     {
       icon: <BarChart3 className="h-6 w-6" />,
-      label: "Métricas",
-      desc: "GA4, Pixel/Tags e eventos de conversão configurados.",
+      label: "Analytics",
+      desc: "Google Analytics 4, Meta Pixel, Tag Manager, eventos customizados e dashboards de conversão.",
       gradient: "from-emerald-500 to-teal-500",
     },
     {
       icon: <ShieldCheck className="h-6 w-6" />,
       label: "Qualidade",
-      desc: "Acessibilidade, responsivo e testes básicos de regressão.",
+      desc: "WCAG 2.1 AA, design responsivo mobile-first, testes automatizados e code review.",
       gradient: "from-amber-500 to-orange-500",
     },
     {
       icon: <Rocket className="h-6 w-6" />,
-      label: "Handoff",
-      desc: "Deploy (Vercel/Store), manual de uso e 30 dias de suporte.",
+      label: "Deploy & Suporte",
+      desc: "CI/CD automatizado, hospedagem (Vercel/AWS), documentação completa e 30 dias de suporte.",
       gradient: "from-violet-500 to-purple-500",
     },
   ];

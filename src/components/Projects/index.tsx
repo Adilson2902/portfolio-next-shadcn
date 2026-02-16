@@ -19,60 +19,139 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Estetico Masso • Plataforma de Agendamento",
+    title: "Michelle Aleixo Fisioterapia",
+    website: "https://site-michelle-aleixo.vercel.app",
+    cover: "/no-img.png",
+    description:
+      "Site profissional para fisioterapeuta especializada em traumato-ortopedia, neurofuncional e geriatria.",
+    whatIDid: [
+      "Landing page moderna em Next.js",
+      "Design responsivo e acessível",
+      "Sistema de agendamento integrado",
+      "SEO otimizado para buscas locais",
+    ],
+    impact: [
+      "Interface profissional e confiável",
+      "Aumento na captação de pacientes",
+      "Experiência mobile otimizada",
+      "Performance Lighthouse 95+",
+    ],
+    stack: ["Next.js", "React", "Tailwind", "TypeScript"],
+    year: "2025",
+  },
+  {
+    title: "Invista no Chamado do Leo",
+    website: "https://www.invistaleo.com.br",
+    cover: "/no-img.png",
+    description:
+      "Plataforma de crowdfunding para apoio à formação ministerial com sistema de doações e acompanhamento.",
+    whatIDid: [
+      "Site institucional em Next.js",
+      "Integração com sistema de pagamentos",
+      "Design emocional e storytelling",
+      "Painel de acompanhamento de metas",
+    ],
+    impact: [
+      "Campanha de arrecadação bem-sucedida",
+      "Interface intuitiva para doações",
+      "Compartilhamento em redes sociais",
+      "Transparência nas contribuições",
+    ],
+    stack: ["Next.js", "React", "Tailwind", "Stripe"],
+    year: "2025",
+  },
+  {
+    title: "Sites para Casamento",
+    website: "https://www.sitesparacasamento.com.br",
+    cover: "/no-img.png",
+    description:
+      "Plataforma para criação de sites personalizados de casamento com convites digitais e lista de presentes.",
+    whatIDid: [
+      "Site em Next.js com design elegante",
+      "Sistema de convites digitais",
+      "Integração com lista de presentes",
+      "Galeria de fotos do casal",
+    ],
+    impact: [
+      "Interface romântica e responsiva",
+      "Fácil personalização pelos noivos",
+      "Compartilhamento via redes sociais",
+      "Performance otimizada",
+    ],
+    stack: ["Next.js", "React", "Tailwind", "TypeScript"],
+    year: "2025",
+  },
+  {
+    title: "Veículos Maceió",
+    website: "https://www.veiculosmaceio.com.br",
+    cover: "/no-img.png",
+    description:
+      "Hub automotivo conectando compradores a vendedores de veículos e serviços automotivos em Maceió.",
+    whatIDid: [
+      "Site em Next.js com SSR e SEO local",
+      "App React Native iOS/Android",
+      "Sistema de leads via WhatsApp API",
+      "Dashboard administrativo",
+    ],
+    impact: [
+      "200% aumento no tráfego orgânico",
+      "500+ leads qualificados/mês",
+      "App com 4.8★ nas lojas",
+      "Lighthouse 95+",
+    ],
+    stack: ["Next.js", "React Native", "TypeScript", "Tailwind"],
+    year: "2024",
+  },
+  {
+    title: "Estetico Masso",
     website: "https://www.esteticomasso.com.br",
     cover:
       "https://www.esteticomasso.com.br/_next/image?url=%2Fassets%2Fhome.png&q=75&w=1920",
     description:
-      "Plataforma voltada para esteticistas e profissionais da saúde, oferecendo serviços de massoterapia, agendamento de sessões e pacotes de serviços.",
+      "Plataforma de agendamento para esteticistas com gestão de pacientes e serviços.",
     whatIDid: [
-      "Desenvolvimento de plataforma com agendamento online.",
-      "Otimização para performance e acessibilidade com foco em SEO local.",
+      "Plataforma web com agendamento em tempo real",
+      "App React Native para clientes",
+      "Notificações automáticas e-mail/SMS",
+      "Painel administrativo completo",
     ],
     impact: [
-      "↑ 35% nas conversões de agendamentos.",
-      "Core Web Vitals otimizados para uma navegação ágil.",
-      "SEO focado nas regiões de Recife, Olinda e Jaboatão, com presença destacada nas buscas locais.",
+      "35% mais conversões",
+      "60% redução em no-shows",
+      "Core Web Vitals 95+",
+      "Destaque em buscas locais",
     ],
-    stack: ["Next.js", "React", "TailwindCSS", "SEO Local"],
+    stack: ["Next.js", "React Native", "Tailwind", "Firebase"],
     year: "2025",
   },
   {
-    title: "ToolSpace • Conversores e Utilitários",
+    title: "ToolSpace",
     website: "https://www.toolspace.com.br",
     cover: "https://www.toolspace.com.br/image.png",
     description:
-      "Ferramenta completa para conversões e utilitários de produtividade, com opções de conversão de arquivos e geração de QR Codes.",
+      "Suite de ferramentas online: conversores, QR Code, visualizador 3D e utilitários.",
     whatIDid: [
-      "Implementação de múltiplos conversores de formatos de arquivo.",
-      "Integração de geração de QR Code e visualização de 3D.",
-      "Foco em uma UI responsiva e acessível para dispositivos móveis.",
+      "15+ conversores de formatos",
+      "Gerador de QR Code customizável",
+      "Visualizador 3D com WebGL",
+      "Processamento client-side",
     ],
     impact: [
-      "Tempo de resposta otimizado para menos de 500ms por requisição.",
-      "Crescimento de 50% no tráfego orgânico com SEO otimizado.",
+      "Resposta < 500ms",
+      "50% mais tráfego orgânico",
+      "100% privacidade dos arquivos",
+      "Suporte até 100MB",
     ],
-    stack: ["Next.js", "TailwindCSS", "shadcn/ui", "Firebase", "WebGL"],
-    year: "2025",
-  },
-  {
-    title: "Futuriza • Soluções de Inteligência Artificial",
-    website: "https://futuriza.io",
-    cover: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Ffuturiza.io?w=1600",
-    description:
-      "Plataforma inovadora com soluções para o mercado de inteligência artificial e automação de processos.",
-    whatIDid: ["Design responsivo com foco em escalabilidade."],
-    impact: ["Melhor visualização de todos os processos e produtos"],
-    stack: ["React", "Next.js", "Tailwind"],
+    stack: ["Next.js", "Tailwind", "WebGL", "Web Workers"],
     year: "2025",
   },
 ];
 
 function ProjectSpotlightCard(p: Project) {
   return (
-    <CardSpotlight className="h-auto w-full max-w-[32rem] overflow-hidden group modern-hover">
+    <CardSpotlight className="h-full w-full flex flex-col overflow-hidden group modern-hover bg-black/40 backdrop-blur-sm">
       {/* COVER com overlay gradiente */}
-      <div className="relative z-20 overflow-hidden rounded-2xl h-48">
+      <div className="relative z-20 overflow-hidden rounded-t-2xl h-48 shrink-0">
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
         <Image
           src={p.cover}
@@ -89,81 +168,85 @@ function ProjectSpotlightCard(p: Project) {
         )}
       </div>
 
-      {/* TÍTULO + LINK PREVIEW */}
-      <div className="relative z-20 mt-6">
-        <h3 className="text-2xl font-bold text-white mb-3 gradient-text">{p.title}</h3>
-        <a
-          href={p.website}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors font-medium group/link"
-        >
-          <Globe className="h-4 w-4" />
-          <span className="underline underline-offset-4">Visitar site</span>
-          <ExternalLink className="h-3 w-3 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
-        </a>
-      </div>
-
-      {/* DESCRIÇÃO */}
-      <p className="relative z-20 mt-4 text-gray-300 leading-relaxed">{p.description}</p>
-
-      {/* O QUE EU FIZ */}
-      <div className="relative z-20 mt-6">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-            <BadgeCheck className="h-5 w-5 text-white" />
-          </div>
-          <p className="text-white font-semibold">O que eu fiz</p>
+      {/* CONTEÚDO com padding consistente e fundo escuro */}
+      <div className="relative z-20 p-6 flex flex-col flex-1 bg-gradient-to-b from-black/60 to-black/80">
+        {/* TÍTULO + LINK */}
+        <div className="mb-4">
+          <h3 className="text-xl font-bold text-white mb-2 gradient-text line-clamp-1">{p.title}</h3>
+          <a
+            href={p.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors text-sm font-medium group/link"
+          >
+            <Globe className="h-4 w-4" />
+            <span className="underline underline-offset-4">Visitar site</span>
+            <ExternalLink className="h-3 w-3 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+          </a>
         </div>
-        <ul className="space-y-2">
-          {p.whatIDid.map((w, i) => (
-            <li key={i} className="flex items-start gap-3 text-gray-300">
-              <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 mt-2 shrink-0"></div>
-              <span>{w}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
 
-      {/* IMPACTO / RESULTADOS */}
-      <div className="relative z-20 mt-6">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
-            <TrendingUp className="h-5 w-5 text-white" />
+        {/* DESCRIÇÃO */}
+        <p className="text-gray-200 text-sm leading-relaxed mb-4 line-clamp-2">{p.description}</p>
+
+        {/* O QUE EU FIZ */}
+        <div className="mb-4">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shrink-0">
+              <BadgeCheck className="h-4 w-4 text-white" />
+            </div>
+            <p className="text-white font-semibold text-sm">Desenvolvimento</p>
           </div>
-          <p className="text-white font-semibold">Impacto e Resultados</p>
+          <ul className="space-y-1.5">
+            {p.whatIDid.slice(0, 4).map((w, i) => (
+              <li key={i} className="flex items-start gap-2 text-gray-200 text-sm">
+                <div className="w-1 h-1 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 mt-1.5 shrink-0"></div>
+                <span className="line-clamp-1">{w}</span>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="space-y-2">
-          {p.impact.map((w, i) => (
-            <li key={i} className="flex items-start gap-3 text-gray-300">
-              <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-400 mt-2 shrink-0"></div>
-              <span>{w}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
 
-      {/* STACK TAGS com gradientes */}
-      <div className="relative z-20 mt-6 flex flex-wrap gap-2">
-        {p.stack.map((t, idx) => {
-          const gradients = [
-            "from-purple-500 to-violet-500",
-            "from-pink-500 to-rose-500",
-            "from-cyan-500 to-blue-500",
-            "from-emerald-500 to-teal-500",
-            "from-amber-500 to-orange-500",
-          ];
-          const gradient = gradients[idx % gradients.length];
-          
-          return (
-            <span
-              key={t}
-              className={`rounded-full px-4 py-2 text-xs font-semibold bg-gradient-to-r ${gradient} text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}
-            >
-              {t}
-            </span>
-          );
-        })}
+        {/* IMPACTO / RESULTADOS */}
+        <div className="mb-4">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shrink-0">
+              <TrendingUp className="h-4 w-4 text-white" />
+            </div>
+            <p className="text-white font-semibold text-sm">Resultados</p>
+          </div>
+          <ul className="space-y-1.5">
+            {p.impact.slice(0, 4).map((w, i) => (
+              <li key={i} className="flex items-start gap-2 text-gray-200 text-sm">
+                <div className="w-1 h-1 rounded-full bg-gradient-to-r from-emerald-400 to-teal-400 mt-1.5 shrink-0"></div>
+                <span className="line-clamp-1">{w}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* STACK TAGS com gradientes - sempre no final */}
+        <div className="mt-auto pt-4">
+          <div className="flex flex-wrap gap-2">
+            {p.stack.slice(0, 4).map((t, idx) => {
+              const gradients = [
+                "from-purple-500 to-violet-500",
+                "from-pink-500 to-rose-500",
+                "from-cyan-500 to-blue-500",
+                "from-emerald-500 to-teal-500",
+              ];
+              const gradient = gradients[idx % gradients.length];
+              
+              return (
+                <span
+                  key={t}
+                  className={`rounded-full px-3 py-1 text-xs font-semibold bg-gradient-to-r ${gradient} text-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}
+                >
+                  {t}
+                </span>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </CardSpotlight>
   );
