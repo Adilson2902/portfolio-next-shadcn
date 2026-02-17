@@ -19,6 +19,27 @@ type Project = {
 
 const projects: Project[] = [
   {
+    title: "Auto Escola Manager",
+    website: "https://auto-escola-manager-uub5.vercel.app",
+    cover: "/no-img.png",
+    description:
+      "Sistema completo de gestão para auto escola com controle de alunos, turmas, instrutores e agendamentos.",
+    whatIDid: [
+      "Dashboard administrativo em Next.js",
+      "Sistema de gestão de alunos e turmas",
+      "Controle de instrutores e veículos",
+      "Agendamento de aulas práticas",
+    ],
+    impact: [
+      "Gestão centralizada e eficiente",
+      "Redução de tempo administrativo",
+      "Interface intuitiva para operadores",
+      "Relatórios e métricas em tempo real",
+    ],
+    stack: ["Next.js", "React", "Tailwind", "TypeScript"],
+    year: "2025",
+  },
+  {
     title: "Michelle Aleixo Fisioterapia",
     website: "https://site-michelle-aleixo.vercel.app",
     cover: "/no-img.png",
@@ -122,27 +143,6 @@ const projects: Project[] = [
       "Destaque em buscas locais",
     ],
     stack: ["Next.js", "React Native", "Tailwind", "Firebase"],
-    year: "2025",
-  },
-  {
-    title: "ToolSpace",
-    website: "https://www.toolspace.com.br",
-    cover: "https://www.toolspace.com.br/image.png",
-    description:
-      "Suite de ferramentas online: conversores, QR Code, visualizador 3D e utilitários.",
-    whatIDid: [
-      "15+ conversores de formatos",
-      "Gerador de QR Code customizável",
-      "Visualizador 3D com WebGL",
-      "Processamento client-side",
-    ],
-    impact: [
-      "Resposta < 500ms",
-      "50% mais tráfego orgânico",
-      "100% privacidade dos arquivos",
-      "Suporte até 100MB",
-    ],
-    stack: ["Next.js", "Tailwind", "WebGL", "Web Workers"],
     year: "2025",
   },
 ];
