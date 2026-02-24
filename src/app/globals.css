@@ -311,3 +311,90 @@
     0 0 20px rgba(139, 92, 246, 0.3),
     0 0 30px rgba(139, 92, 246, 0.1);
 }
+
+/* Estilos para impressao/PDF */
+.print-resume {
+  display: none;
+}
+
+@media print {
+  @page {
+    margin: 1.5cm;
+    size: A4 portrait;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    animation: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body::before {
+    display: none !important;
+  }
+
+  nav,
+  button,
+  .fixed,
+  [data-sonner-toaster] {
+    display: none !important;
+  }
+
+  main {
+    display: block !important;
+  }
+
+  main > :not(.print-resume) {
+    display: none !important;
+  }
+
+  .print-resume {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 210mm !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    font-size: 10.5pt !important;
+    line-height: 1.45 !important;
+    color: #111827 !important;
+    page-break-after: avoid !important;
+  }
+
+  .print-resume * {
+    visibility: visible !important;
+  }
+
+  .print-resume h1,
+  .print-resume h2,
+  .print-resume h3,
+  .print-resume h4 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .print-resume section,
+  .print-resume .print-avoid-break,
+  .print-resume ul,
+  .print-resume li,
+  .print-resume p {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .print-resume a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  .print-resume svg {
+    display: inline-block !important;
+    vertical-align: middle;
+  }
+}

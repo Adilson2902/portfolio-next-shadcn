@@ -6,6 +6,7 @@ import Projects from "@/components/Projects";
 import Footer from "@/components/Footer";
 import Timeline from "@/components/Timeline";
 import FAQ from "@/components/FAQ";
+import { Resume } from "@/components/Resume";
 import { SectionDivider } from "@/components/ui/section-divider";
 import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
@@ -14,6 +15,9 @@ import { SocialShare } from "@/components/ui/social-share";
 export default function Home() {
   return (
     <>
+      {/* Currículo para impressão */}
+      <Resume />
+
       {/* Barra de ferramentas flutuante */}
       <div className="fixed top-4 right-4 z-50 flex items-center gap-3">
         <ThemeSwitcher />

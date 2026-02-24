@@ -150,7 +150,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.2 }}
-          className="flex justify-center"
+          className="flex justify-center gap-4 flex-wrap"
         >
           <a
             href="https://www.linkedin.com/in/adilson-adriano"
@@ -163,6 +163,16 @@ export function Hero() {
             </svg>
             <span className="font-medium">LinkedIn</span>
           </a>
+          
+          <button
+            onClick={() => window.print()}
+            className="glass-effect px-6 py-3 rounded-xl flex items-center gap-3 modern-hover border border-cyan-500/30 hover:border-cyan-500/60 transition-all group"
+          >
+            <svg className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span className="font-medium">Baixar Currículo</span>
+          </button>
         </motion.div>
       </div>
     </section>
