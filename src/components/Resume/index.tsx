@@ -90,7 +90,7 @@ export function Resume() {
               <p className="text-sm font-semibold text-purple-700">ImuneKids</p>
             </div>
             <span className="text-xs font-medium text-gray-600">
-              2020 - 2023
+              2019 - 2021
             </span>
           </div>
           <ul className="ml-4 list-disc space-y-1 text-sm text-gray-700">
