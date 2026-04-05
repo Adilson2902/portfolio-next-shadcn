@@ -1,8 +1,18 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
+import { ArrowRight } from "lucide-react";
+
+export type FocusCard = {
+  title: string;
+  src?: string;
+  icon?: React.ReactNode;
+  backgroundClassName?: string;
+  description?: string;
+};
 
 export const Card = React.memo(
   ({
@@ -11,88 +21,144 @@ export const Card = React.memo(
     hovered,
     setHovered,
   }: {
-    card: any;
+    card: FocusCard;
     index: number;
     hovered: number | null;
     setHovered: React.Dispatch<React.SetStateAction<number | null>>;
   }) => (
-    <div
+    <motion.a
+      href="#contact"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
       onMouseEnter={() => setHovered(index)}
       onMouseLeave={() => setHovered(null)}
       className={cn(
-        "rounded-2xl relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-72 md:h-[26rem] w-full transition-all duration-300 ease-out",
-        hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
+        "group relative rounded-2xl overflow-hidden h-64 md:h-[26rem] w-full transition-all duration-500 ease-out cursor-pointer block",
+        "border border-white/10 hover:border-purple-500/60",
+        "shadow-lg hover:shadow-purple-500/30 hover:shadow-2xl",
+        hovered !== null && hovered !== index && "blur-sm scale-[0.97] opacity-60"
       )}
     >
-      <CardMedia card={card} />
-      <CardOverlay title={card.title} hovered={hovered === index} />
-    </div>
+      <CardMedia card={card} hovered={hovered === index} />
+      <CardOverlay card={card} hovered={hovered === index} />
+    </motion.a>
   )
 );
 
 Card.displayName = "Card";
 
-type Card = {
-  title: string;
-  src?: string;
-  icon?: React.ReactNode;
-  backgroundClassName?: string; // Tailwind classes for gradient/pattern backgrounds
-};
-
-function CardMedia({ card }: { card: Card }) {
+function CardMedia({ card, hovered }: { card: FocusCard; hovered: boolean }) {
   const [failed, setFailed] = useState(false);
   const useImage = !!card.src && !failed;
-  const bg = useMemo(() => {
-    if (card.backgroundClassName) return card.backgroundClassName;
-    // pleasant default gradient
-    return "bg-gradient-to-br from-primary/20 via-primary/10 to-transparent dark:from-primary/30 dark:via-primary/20";
-  }, [card.backgroundClassName]);
 
   if (useImage) {
     return (
-      <img
-        src={card.src}
-        alt={card.title}
-        className="object-cover absolute inset-0 w-full h-full"
-        onError={() => setFailed(true)}
-      />
+      <div className="absolute inset-0 w-full h-full">
+        <Image
+          src={card.src!}
+          alt={card.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className={cn(
+            "object-cover transition-transform duration-700 ease-out",
+            hovered ? "scale-110" : "scale-100"
+          )}
+          onError={() => setFailed(true)}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
+      </div>
     );
   }
 
+  const bg =
+    card.backgroundClassName ||
+    "bg-gradient-to-br from-purple-600/30 via-indigo-500/20 to-transparent";
+
   return (
     <div className={cn("absolute inset-0 w-full h-full", bg)}>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.15),transparent_60%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.08),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.08),transparent_60%)]" />
       <div className="relative h-full w-full flex items-center justify-center">
-        <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white/70 dark:bg-white/10 backdrop-blur-md flex items-center justify-center shadow-sm border border-black/5 dark:border-white/10 text-neutral-900 dark:text-neutral-100">
-          {card.icon}
+        <div
+          className={cn(
+            "w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center shadow-sm border border-white/10 text-neutral-100 transition-all duration-500",
+            hovered ? "scale-125 rotate-6 shadow-purple-500/30 shadow-lg" : "scale-100 rotate-0"
+          )}
+        >
+          <span className="scale-150">{card.icon}</span>
         </div>
       </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
     </div>
   );
 }
 
-function CardOverlay({ title, hovered }: { title: string; hovered: boolean }) {
+function CardOverlay({ card, hovered }: { card: FocusCard; hovered: boolean }) {
   return (
-    <div className="pointer-events-none absolute inset-x-0 bottom-0">
-      <div
-        className={cn(
-          "w-full bg-gradient-to-t from-black/70 via-black/40 to-transparent px-4 py-5 transition-all duration-300",
-          hovered ? "from-black/80 via-black/50" : "from-black/60 via-black/30"
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10">
+      <div className="w-full px-5 pb-5 pt-10 bg-gradient-to-t from-black/80 to-transparent">
+        {/* Icon badge (only when has image) */}
+        {card.icon && card.src && (
+          <div
+            className={cn(
+              "w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 mb-3 transition-all duration-500",
+              hovered
+                ? "translate-y-0 opacity-100 scale-100"
+                : "translate-y-4 opacity-0 scale-90"
+            )}
+          >
+            {card.icon}
+          </div>
         )}
-      >
-        <div className="text-xl md:text-3xl font-semibold tracking-tight text-white drop-shadow-sm">
-          {title}
+
+        {/* Title */}
+        <p className="text-lg md:text-xl font-bold tracking-tight text-white drop-shadow-lg">
+          {card.title}
+        </p>
+
+        {/* Description — always visible on mobile, hover on desktop */}
+        {card.description && (
+          <p
+            className={cn(
+              "text-sm text-gray-300/90 mt-1.5 leading-relaxed transition-all duration-500 max-w-[95%]",
+              "opacity-100 md:opacity-0 md:translate-y-2 md:max-h-0 overflow-hidden",
+              hovered && "md:opacity-100 md:translate-y-0 md:max-h-20"
+            )}
+          >
+            {card.description}
+          </p>
+        )}
+
+        {/* CTA */}
+        <div
+          className={cn(
+            "mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-purple-300 transition-all duration-500",
+            "opacity-100 md:opacity-0 md:translate-y-2",
+            hovered && "md:opacity-100 md:translate-y-0"
+          )}
+        >
+          <span>Solicitar projeto</span>
+          <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
         </div>
+
+        {/* Accent line */}
+        <div
+          className={cn(
+            "h-0.5 mt-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-500",
+            hovered ? "w-full opacity-100" : "w-8 opacity-40"
+          )}
+        />
       </div>
     </div>
   );
 }
 
-export function FocusCards({ cards }: { cards: Card[] }) {
+export function FocusCards({ cards }: { cards: FocusCard[] }) {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-5xl mx-auto md:px-8 w-full">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 max-w-6xl mx-auto px-4 md:px-8 w-full">
       {cards.map((card, index) => (
         <Card
           key={card.title}

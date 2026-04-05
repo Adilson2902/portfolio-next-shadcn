@@ -36,6 +36,12 @@ export function SocialShare({ url, title }: SocialShareProps) {
 
   return (
     <div className="relative">
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -51,7 +57,7 @@ export function SocialShare({ url, title }: SocialShareProps) {
           initial={{ opacity: 0, scale: 0.9, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 10 }}
-          className="absolute bottom-full mb-2 right-0 glass-effect p-4 rounded-2xl border border-purple-500/30 shadow-xl min-w-[200px]"
+          className="absolute top-full mt-2 right-0 z-50 glass-effect p-4 rounded-2xl border border-purple-500/30 shadow-xl w-[200px]"
         >
           <p className="text-sm text-gray-400 mb-3">Compartilhar via:</p>
           <div className="flex flex-col gap-2">

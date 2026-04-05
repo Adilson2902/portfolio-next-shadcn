@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('react:', d.get\\('packages',{}\\).get\\('node_modules/react',{}\\).get\\('version','?'\\)\\); print\\('react-dom:', d.get\\('packages',{}\\).get\\('node_modules/react-dom',{}\\).get\\('version','?'\\)\\)\")",
+      "Bash(node -e \"const r=require\\('./node_modules/react/package.json'\\); const rd=require\\('./node_modules/react-dom/package.json'\\); console.log\\('react:',r.version,'react-dom:',rd.version\\)\")"
+    ]
+  }
+}
