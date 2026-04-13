@@ -39,7 +39,7 @@ export default function Footer() {
         {/* LinkedIn */}
         <div className="mt-6">
           <a
-            href="https://www.linkedin.com/in/adilson-adriano"
+            href="https://www.linkedin.com/in/adilson-adriano-062018197"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 glass-effect px-4 py-2 rounded-full text-sm font-medium border border-purple-500/30 hover:border-purple-500/60 transition-all modern-hover"
