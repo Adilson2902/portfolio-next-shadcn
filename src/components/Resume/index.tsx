@@ -28,7 +28,7 @@ export function Resume() {
           </div>
           <div className="flex items-center gap-2">
             <Linkedin className="h-4 w-4 text-purple-700" />
-            <span>linkedin.com/in/adilson-adriano</span>
+            <span>linkedin.com/in/adilson-adriano-062018197</span>
           </div>
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4 text-purple-700" />
@@ -142,12 +142,12 @@ export function Resume() {
 
         <div className="grid grid-cols-2 gap-3">
           <div className="border-l-4 border-purple-600 pl-3">
-            <h4 className="text-sm font-bold text-gray-900">Veículos Maceió</h4>
+            <h4 className="text-sm font-bold text-gray-900">Toolspace</h4>
             <p className="text-xs text-gray-600">
-              Hub automotivo com app React Native (iOS/Android).
+              Mais de 20 ferramentas online em Next.js na Vercel.
             </p>
             <p className="mt-1 text-xs text-gray-700">
-              Resultado: +200% de tráfego orgânico e 500+ leads/mês.
+              Cerca de 1.800 visitantes/semana; AdSense e PIX via Mercado Pago.
             </p>
           </div>
 
@@ -155,9 +155,6 @@ export function Resume() {
             <h4 className="text-sm font-bold text-gray-900">Estetico Masso</h4>
             <p className="text-xs text-gray-600">
               Plataforma de agendamento com painel administrativo.
-            </p>
-            <p className="mt-1 text-xs text-gray-700">
-              Resultado: +35% de conversão e -60% de no-shows.
             </p>
           </div>
 
@@ -181,7 +178,7 @@ export function Resume() {
               Site profissional com agendamento e SEO local.
             </p>
             <p className="mt-1 text-xs text-gray-700">
-              Resultado: performance Lighthouse 95+ e aumento de captação.
+              Landing page responsiva com SEO local.
             </p>
           </div>
         </div>

@@ -1,22 +1,24 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...nextVitals,
+  ...nextTs,
+  { ignores: [".next/**", "node_modules/**", "coverage/**", "next-env.d.ts"] },
   {
     rules: {
       "@next/next/no-img-element": "off",
       "react-hooks/exhaustive-deps": "warn",
       "@typescript-eslint/no-explicit-any": "warn",
+      // Regras do React Compiler (novas no eslint-config-next 16): código legado de UI, revisar depois
+      "react-hooks/immutability": "warn",
+      "react-hooks/purity": "warn",
+      "react-hooks/set-state-in-effect": "warn",
     },
+  },
+  {
+    files: ["jest.config.js", "jest.setup.js"],
+    rules: { "@typescript-eslint/no-require-imports": "off" },
   },
 ];
 

@@ -2,12 +2,22 @@ import { render, screen } from '@testing-library/react'
 import { Hero } from '../index'
 
 // Mock framer-motion
-jest.mock('motion/react', () => ({
-  motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
-    h1: ({ children, ...props }: any) => <h1 {...props}>{children}</h1>,
-  },
-}))
+jest.mock('motion/react', () => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const React = require('react')
+  const motionProps = ['initial', 'animate', 'exit', 'transition', 'whileHover', 'whileTap', 'whileInView', 'viewport', 'variants', 'layout']
+  const motion = new Proxy({}, {
+    get: (_t, tag: string) => {
+      const Comp = React.forwardRef(({ children, ...props }: any, ref: any) => {
+        for (const k of motionProps) delete props[k]
+        return React.createElement(tag, { ...props, ref }, children)
+      })
+      Comp.displayName = `motion.${tag}`
+      return Comp
+    },
+  })
+  return { motion, AnimatePresence: ({ children }: any) => children }
+})
 
 // Mock next/image
 jest.mock('next/image', () => ({
@@ -30,8 +40,8 @@ describe('Hero Component', () => {
   })
 
   it('shows tech stack', () => {
-    render(<Hero />)
-    expect(screen.getByText(/React • Next.js • React Native/i)).toBeInTheDocument()
+    const { container } = render(<Hero />)
+    expect(container.textContent).toMatch(/React • Next\.js • React Native/i)
   })
 
   it('displays experience description', () => {
@@ -43,7 +53,7 @@ describe('Hero Component', () => {
   it('renders LinkedIn link', () => {
     render(<Hero />)
     const linkedinLink = screen.getByRole('link', { name: /linkedin/i })
-    expect(linkedinLink).toHaveAttribute('href', 'https://www.linkedin.com/in/adilson-adriano')
+    expect(linkedinLink).toHaveAttribute('href', 'https://www.linkedin.com/in/adilson-adriano-062018197')
     expect(linkedinLink).toHaveAttribute('target', '_blank')
   })
 

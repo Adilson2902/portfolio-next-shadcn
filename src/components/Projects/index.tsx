@@ -8,7 +8,7 @@ import { TrendingUp, BadgeCheck, ExternalLink, ArrowUpRight } from "lucide-react
 
 type Project = {
   title: string;
-  website: string;
+  website?: string;
   cover: string;
   description: string;
   whatIDid: string[];
@@ -18,6 +18,42 @@ type Project = {
 };
 
 const projects: Project[] = [
+  {
+    title: "Toolspace",
+    website: "https://www.toolspace.com.br",
+    cover: "/projects/toolspace.jpg",
+    description:
+      "Plataforma com mais de 20 ferramentas online gratuitas (boleto, PDF, rescisão CLT e outras), monetizada com anúncios e plano Pro.",
+    whatIDid: [
+      "Produto completo em Next.js na Vercel",
+      "Mais de 20 ferramentas online",
+      "AdSense e pagamento via Mercado Pago e PIX",
+    ],
+    impact: [
+      "Cerca de 1.800 visitantes por semana",
+      "7 a 8 mil visitantes por mês (Vercel Analytics)",
+      "Receita com AdSense e assinaturas via PIX",
+    ],
+    stack: ["Next.js", "Vercel", "TypeScript", "Mercado Pago"],
+    year: "2025",
+  },
+  {
+    title: "Valen Rush",
+    cover: "/projects/valen-rush.jpg",
+    description:
+      "Action RPG para navegador desenvolvido em Three.js e TypeScript. Projeto autoral em desenvolvimento.",
+    whatIDid: [
+      "Jogo 3D em Three.js e TypeScript",
+      "Combate e progressão de action RPG",
+      "Build com Vite",
+    ],
+    impact: [
+      "Projeto autoral, sem link público",
+      "Renderização 3D no navegador",
+    ],
+    stack: ["Three.js", "TypeScript", "Vite"],
+    year: "2026",
+  },
   {
     title: "Auto Escola Manager",
     website: "https://auto-escola-manager-uub5.vercel.app",
@@ -34,7 +70,6 @@ const projects: Project[] = [
       "Gestão centralizada e eficiente",
       "Redução de tempo administrativo",
       "Interface intuitiva para operadores",
-      "Relatórios e métricas em tempo real",
     ],
     stack: ["Next.js", "React", "Tailwind", "TypeScript"],
     year: "2025",
@@ -53,9 +88,7 @@ const projects: Project[] = [
     ],
     impact: [
       "Interface profissional e confiável",
-      "Aumento na captação de pacientes",
       "Experiência mobile otimizada",
-      "Performance Lighthouse 95+",
     ],
     stack: ["Next.js", "React", "Tailwind", "TypeScript"],
     year: "2025",
@@ -115,10 +148,8 @@ const projects: Project[] = [
       "Dashboard administrativo",
     ],
     impact: [
-      "200% aumento no tráfego orgânico",
-      "500+ leads qualificados/mês",
-      "App com 4.8★ nas lojas",
-      "Lighthouse 95+",
+      "SEO local e site com SSR",
+      "App mobile iOS/Android",
     ],
     stack: ["Next.js", "React Native", "TypeScript", "Tailwind"],
     year: "2024",
@@ -137,9 +168,8 @@ const projects: Project[] = [
       "Painel administrativo completo",
     ],
     impact: [
-      "35% mais conversões",
-      "60% redução em no-shows",
-      "Core Web Vitals 95+",
+      "Agendamento online para clientes",
+      "Lembretes automáticos de horário",
       "Destaque em buscas locais",
     ],
     stack: ["Next.js", "React Native", "Tailwind", "Firebase"],
@@ -234,6 +264,7 @@ function ProjectCard(p: Project) {
         </div>
 
         {/* CTA button — sempre visível e em destaque */}
+        {p.website ? (
         <a
           href={p.website}
           target="_blank"
@@ -245,6 +276,11 @@ function ProjectCard(p: Project) {
           <span>Ver projeto</span>
           <ArrowUpRight className="h-4 w-4 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-transform duration-200" />
         </a>
+        ) : (
+          <span className="mt-auto flex items-center justify-center w-full py-2.5 px-4 rounded-xl font-semibold text-sm text-gray-300 border border-white/10">
+            Repositório privado
+          </span>
+        )}
       </div>
     </CardSpotlight>
   );

@@ -24,7 +24,7 @@ describe('Footer Component', () => {
   it('displays LinkedIn link', () => {
     render(<Footer />)
     const linkedinLink = screen.getByRole('link', { name: /adilson adriano/i })
-    expect(linkedinLink).toHaveAttribute('href', 'https://www.linkedin.com/in/adilson-adriano')
+    expect(linkedinLink).toHaveAttribute('href', 'https://www.linkedin.com/in/adilson-adriano-062018197')
     expect(linkedinLink).toHaveAttribute('target', '_blank')
   })
 
