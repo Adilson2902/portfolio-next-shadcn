@@ -41,23 +41,24 @@ export const metadata: Metadata = {
   keywords: ["desenvolvedor front-end", "React", "Next.js", "React Native", "TypeScript", "Tailwind CSS", "SEO", "Performance"],
   authors: [{ name: "Adilson" }],
   creator: "Adilson",
-  metadataBase: new URL('https://seudominio.com'),
+  metadataBase: new URL('https://adilson-portfolio.vercel.app'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://seudominio.com",
+    url: "https://adilson-portfolio.vercel.app",
     title: "Adilson - Desenvolvedor Front-end",
     description: "Portfólio profissional com projetos modernos em React, Next.js e React Native",
     siteName: "Adilson Portfolio",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Adilson — Desenvolvedor Front-end" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Adilson - Desenvolvedor Front-end",
     description: "Portfólio profissional com projetos modernos em React, Next.js e React Native",
-    creator: "@seutwitter",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,

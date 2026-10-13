@@ -16,7 +16,7 @@ describe('Resume Component', () => {
     render(<Resume />)
     expect(screen.getByText('nunojraa3@gmail.com')).toBeInTheDocument()
     expect(screen.getByText('(81) 98264-4557')).toBeInTheDocument()
-    expect(screen.getByText('linkedin.com/in/adilson-adriano')).toBeInTheDocument()
+    expect(screen.getByText('linkedin.com/in/adilson-adriano-062018197')).toBeInTheDocument()
     expect(screen.getByText('Recife - PE')).toBeInTheDocument()
   })
 
@@ -36,7 +36,7 @@ describe('Resume Component', () => {
     render(<Resume />)
     expect(screen.getByText('Desenvolvedor Front-end (Estágio)')).toBeInTheDocument()
     expect(screen.getByText('ImuneKids')).toBeInTheDocument()
-    expect(screen.getByText('2020 - 2023')).toBeInTheDocument()
+    expect(screen.getByText('2019 - 2021')).toBeInTheDocument()
   })
 
   it('shows freelance experience', () => {
@@ -48,7 +48,7 @@ describe('Resume Component', () => {
 
   it('displays featured projects', () => {
     render(<Resume />)
-    expect(screen.getByText('Veículos Maceió')).toBeInTheDocument()
+    expect(screen.getByText('Toolspace')).toBeInTheDocument()
     expect(screen.getByText('Estetico Masso')).toBeInTheDocument()
     expect(screen.getByText('Auto Escola Manager')).toBeInTheDocument()
     expect(screen.getByText('Michelle Aleixo Fisioterapia')).toBeInTheDocument()

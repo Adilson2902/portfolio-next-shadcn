@@ -28,7 +28,7 @@ const experiences = [
     title: "Projetos Freelance Entregues",
     company: "Últimos 2 anos",
     period: "2023 - 2025",
-    description: "15+ projetos incluindo: Auto Escola Manager (gestão educacional), Veículos Maceió (hub automotivo + app), Estetico Masso (agendamentos + app), Sites para Casamento, Michelle Aleixo Fisioterapia, Invista Leo (crowdfunding) e ToolSpace (ferramentas online).",
+    description: "Projetos incluindo: Auto Escola Manager (gestão educacional), Veículos Maceió (hub automotivo + app), Estetico Masso (agendamentos + app), Sites para Casamento, Michelle Aleixo Fisioterapia, Invista Leo (crowdfunding) e ToolSpace (ferramentas online).",
     skills: ["E-commerce", "Dashboards", "Apps Mobile", "Landing Pages"],
   },
 ];

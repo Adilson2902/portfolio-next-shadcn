@@ -53,7 +53,7 @@ export default function Services() {
     },
     {
       title: "Otimização de Performance",
-      description: "Core Web Vitals, Lighthouse 90+, bundle optimization e lazy loading.",
+      description: "Core Web Vitals, bundle optimization e lazy loading.",
       src: "/services/performance.png",
       icon: <Zap className="h-5 w-5 text-cyan-400" />,
     },
@@ -99,7 +99,7 @@ export default function Services() {
     {
       icon: <Gauge className="h-6 w-6" />,
       label: "Performance",
-      desc: "Core Web Vitals otimizados, carregamento < 2s, Lighthouse score 90+.",
+      desc: "Core Web Vitals otimizados e carregamento rápido.",
       gradient: "from-purple-500 to-violet-500",
     },
     {
