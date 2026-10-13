@@ -120,7 +120,7 @@ export function Resume() {
           </div>
           <ul className="ml-4 list-disc space-y-1 text-sm text-gray-700">
             <li>
-              Entrega de 15+ projetos, incluindo plataformas, landing pages e
+              Entrega de projetos, incluindo plataformas, landing pages e
               dashboards.
             </li>
             <li>

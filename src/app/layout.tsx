@@ -41,14 +41,14 @@ export const metadata: Metadata = {
   keywords: ["desenvolvedor front-end", "React", "Next.js", "React Native", "TypeScript", "Tailwind CSS", "SEO", "Performance"],
   authors: [{ name: "Adilson" }],
   creator: "Adilson",
-  metadataBase: new URL('https://adilson-matos-front.vercel.app'),
+  metadataBase: new URL('https://adilson-portfolio.vercel.app'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://adilson-matos-front.vercel.app",
+    url: "https://adilson-portfolio.vercel.app",
     title: "Adilson - Desenvolvedor Front-end",
     description: "Portfólio profissional com projetos modernos em React, Next.js e React Native",
     siteName: "Adilson Portfolio",

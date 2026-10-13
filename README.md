@@ -2,7 +2,7 @@
 
 Portfólio pessoal de desenvolvedor front-end, feito com Next.js, Tailwind CSS e shadcn/ui.
 
-**Site:** https://adilson-matos-front.vercel.app
+**Site:** https://adilson-portfolio.vercel.app
 
 ![Prévia do portfólio](public/og-image.png)
 
