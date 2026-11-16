@@ -9,6 +9,12 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    // aura-ui-effects/components são ESM-only (sem export "require"); o mapper
+    // aponta para o dist e o SWC transpila via transformIgnorePatterns abaixo.
+    '^aura-ui-effects$': '<rootDir>/node_modules/aura-ui-effects/dist/index.js',
+    '^aura-ui-effects/(.*)$': '<rootDir>/node_modules/aura-ui-effects/dist/$1.js',
+    '^aura-ui-components$': '<rootDir>/node_modules/aura-ui-components/dist/index.js',
+    '^aura-ui-components/(.*)$': '<rootDir>/node_modules/aura-ui-components/dist/$1.js',
   },
   collectCoverageFrom: [
     'src/components/**/*.{js,jsx,ts,tsx}',

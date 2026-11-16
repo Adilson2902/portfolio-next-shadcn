@@ -1,62 +1,52 @@
-"use client";
-
-import { motion } from "motion/react";
-import { ContactPinCard } from "./Card";
-import { MessageCircle } from "lucide-react";
-
+import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
+import { Spotlight } from "aura-ui-effects";
+import { Button } from "aura-ui-components";
+import { profile } from "@/lib/portfolio";
 export default function Contact() {
+  const message = encodeURIComponent(
+    "Olá, Adilson! Gostaria de conversar sobre um projeto. Meu objetivo é: ",
+  );
   return (
-    <section id="contact" className="relative px-4 flex flex-col items-center py-24 scroll-mt-24 overflow-hidden">
-      {/* Gradientes de fundo */}
-      <div className="absolute top-10 right-20 w-80 h-80 bg-purple-500/10 rounded-full blur-[100px]"></div>
-      <div className="absolute bottom-10 left-20 w-80 h-80 bg-pink-500/10 rounded-full blur-[100px]"></div>
-      
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="relative z-10 mb-12"
-      >
-        <div className="flex items-center justify-center gap-3 mb-4">
-          <MessageCircle className="w-8 h-8 text-purple-400" />
-          <h2 className="text-4xl sm:text-5xl font-bold gradient-text text-center">
-            Contatos
-          </h2>
-        </div>
-        <p className="text-gray-400 text-center max-w-2xl mx-auto">
-          Entre em contato para discutir seu próximo projeto
+    <section
+      id="contact"
+      className="section-shell section-space"
+      aria-labelledby="contact-title"
+    >
+      <Spotlight className="contact-panel" size={480} intensity={0.1}>
+        <p className="eyebrow">Contato</p>
+        <h2 id="contact-title">
+          O próximo passo
+          <br />é uma conversa.
+        </h2>
+        <p>
+          Um site novo, uma aplicação ou uma interface que precisa evoluir.
+          <br className="desktop-break" /> Conte seu objetivo, o prazo desejado
+          e o que você já tem.
         </p>
-      </motion.div>
-
-      <div className="relative z-10 mt-8 w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 place-items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          <ContactPinCard type="mail" handle="nunojraa3@gmail.com" />
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <ContactPinCard type="instagram" handle="adilsonadriano123" />
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <ContactPinCard type="whatsApp" handle="81982644557" />
-        </motion.div>
-      </div>
+        <div className="actions">
+          <Button asChild size="lg">
+            <a
+              href={`${profile.whatsapp}?text=${message}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle aria-hidden="true" /> Conversar no WhatsApp
+              <span className="sr-only"> (abre em nova aba)</span>
+            </a>
+          </Button>
+          <Button asChild size="lg" variant="outline">
+            <a
+              href={`mailto:${profile.email}?subject=${encodeURIComponent("Vamos conversar sobre um projeto")}`}
+            >
+              <Mail aria-hidden="true" /> Enviar um e-mail
+            </a>
+          </Button>
+        </div>
+        <a className="contact-email" href={`mailto:${profile.email}`}>
+          {profile.email}
+          <ArrowUpRight size={15} aria-hidden="true" />
+        </a>
+      </Spotlight>
     </section>
   );
 }

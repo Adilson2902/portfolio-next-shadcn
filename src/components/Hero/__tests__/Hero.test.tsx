@@ -1,73 +1,35 @@
-import { render, screen } from '@testing-library/react'
-import { Hero } from '../index'
-
-// Mock framer-motion
-jest.mock('motion/react', () => ({
-  motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
-    h1: ({ children, ...props }: any) => <h1 {...props}>{children}</h1>,
-  },
-}))
-
-// Mock next/image
-jest.mock('next/image', () => ({
-  __esModule: true,
-  default: (props: any) => {
-    // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
-    return <img {...props} />
-  },
-}))
-
-describe('Hero Component', () => {
-  it('renders hero section', () => {
-    render(<Hero />)
-    expect(screen.getByText('Adilson')).toBeInTheDocument()
-  })
-
-  it('displays developer title', () => {
-    render(<Hero />)
-    expect(screen.getByText('Desenvolvedor Front-end')).toBeInTheDocument()
-  })
-
-  it('shows tech stack', () => {
-    render(<Hero />)
-    expect(screen.getByText(/React • Next.js • React Native/i)).toBeInTheDocument()
-  })
-
-  it('displays experience description', () => {
-    render(<Hero />)
-    expect(screen.getByText(/4 anos/i)).toBeInTheDocument()
-    expect(screen.getByText(/2 anos/i)).toBeInTheDocument()
-  })
-
-  it('renders LinkedIn link', () => {
-    render(<Hero />)
-    const linkedinLink = screen.getByRole('link', { name: /linkedin/i })
-    expect(linkedinLink).toHaveAttribute('href', 'https://www.linkedin.com/in/adilson-adriano')
-    expect(linkedinLink).toHaveAttribute('target', '_blank')
-  })
-
-  it('renders download CV button', () => {
-    render(<Hero />)
-    const downloadButton = screen.getByRole('button', { name: /baixar currículo/i })
-    expect(downloadButton).toBeInTheDocument()
-  })
-
-  it('calls window.print when download button is clicked', () => {
-    const printMock = jest.fn()
-    global.print = printMock
-
-    render(<Hero />)
-    const downloadButton = screen.getByRole('button', { name: /baixar currículo/i })
-    downloadButton.click()
-
-    expect(printMock).toHaveBeenCalled()
-  })
-
-  it('displays skill badges', () => {
-    render(<Hero />)
-    expect(screen.getByText('TypeScript Expert')).toBeInTheDocument()
-    expect(screen.getByText('Performance Focused')).toBeInTheDocument()
-    expect(screen.getByText('3D Animations')).toBeInTheDocument()
-  })
-})
+import { render, screen, fireEvent } from "@testing-library/react";
+import { Hero } from "../index";
+import { profile } from "@/lib/portfolio";
+describe("Hero", () => {
+  it("presents a single primary heading and clear routes to projects and contact", () => {
+    render(<Hero />);
+    expect(screen.getAllByRole("heading", { level: 1 })).toHaveLength(1);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      "Adilson Adriano",
+    );
+    expect(
+      screen.getByRole("link", { name: /Conhecer os projetos/i }),
+    ).toHaveAttribute("href", "#projects");
+    expect(
+      screen.getByRole("link", { name: /Conversar sobre um projeto/i }),
+    ).toHaveAttribute("href", "#contact");
+  });
+  it("uses the existing verified LinkedIn URL", () => {
+    render(<Hero />);
+    expect(screen.getByRole("link", { name: /LinkedIn/ })).toHaveAttribute(
+      "href",
+      profile.linkedin,
+    );
+  });
+  it("opens print only after the visitor requests the résumé", () => {
+    const print = jest.spyOn(window, "print").mockImplementation(() => {});
+    render(<Hero />);
+    expect(print).not.toHaveBeenCalled();
+    fireEvent.click(
+      screen.getByRole("button", { name: /Salvar currículo em PDF/ }),
+    );
+    expect(print).toHaveBeenCalledTimes(1);
+    print.mockRestore();
+  });
+});

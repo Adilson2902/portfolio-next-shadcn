@@ -1,5 +1,13 @@
 import '@testing-library/jest-dom'
 
+// aura-ui-effects/components são ESM-only e o Jest (CJS) não transpila
+// node_modules fora de .pnpm/geist. Mock global: cada export vira um
+// componente passthrough — os testes validam estrutura/texto, não animação.
+const mockPassthroughComponent = ({ children }) => children ?? null
+
+jest.mock('aura-ui-effects', () => new Proxy({}, { get: () => mockPassthroughComponent }))
+jest.mock('aura-ui-components', () => new Proxy({}, { get: () => mockPassthroughComponent }))
+
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,

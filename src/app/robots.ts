@@ -1,14 +1,8 @@
-import { MetadataRoute } from 'next'
-
+import type { MetadataRoute } from "next";
+import { profile } from "@/lib/portfolio";
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://seudominio.com' // Substitua pelo seu domínio
-
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/api/', '/admin/'],
-    },
-    sitemap: `${baseUrl}/sitemap.xml`,
-  }
+    rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/admin/"] },
+    sitemap: `${profile.site}/sitemap.xml`,
+  };
 }
