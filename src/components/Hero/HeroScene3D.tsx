@@ -27,7 +27,13 @@ function createParticlePositions(count: number): Float32Array {
   return positions;
 }
 
-function HeroCrystalCluster() {
+function HeroCrystalCluster({
+  compact,
+  active,
+}: {
+  compact: boolean;
+  active: boolean;
+}) {
   const groupRef = useRef<THREE.Group>(null);
   const outerRef = useRef<THREE.Mesh>(null);
   const innerRef = useRef<THREE.Mesh>(null);
@@ -36,15 +42,17 @@ function HeroCrystalCluster() {
   const pointsRef = useRef<THREE.Points>(null);
 
   const particlePositions = useMemo(
-    () => createParticlePositions(PARTICLE_COUNT),
-    [],
+    () => createParticlePositions(compact ? 54 : PARTICLE_COUNT),
+    [compact],
   );
+  const torusSegments = compact ? 48 : 96;
 
   useFrame((state, delta) => {
+    if (!active) return;
     const dt = Math.min(delta, 0.05);
     const t = state.clock.getElapsedTime();
-    const px = THREE.MathUtils.clamp(state.pointer.x, -1, 1);
-    const py = THREE.MathUtils.clamp(state.pointer.y, -1, 1);
+    const px = compact ? 0 : THREE.MathUtils.clamp(state.pointer.x, -1, 1);
+    const py = compact ? 0 : THREE.MathUtils.clamp(state.pointer.y, -1, 1);
     const baseX = state.viewport.width > 8.5 ? 0.95 : 0;
 
     if (groupRef.current) {
@@ -127,7 +135,7 @@ function HeroCrystalCluster() {
         </bufferGeometry>
         <pointsMaterial
           color="#c4b5fd"
-          size={0.045}
+          size={compact ? 0.055 : 0.045}
           transparent
           opacity={0.72}
           sizeAttenuation
@@ -159,7 +167,7 @@ function HeroCrystalCluster() {
         </mesh>
 
         <mesh ref={ringOneRef} rotation={[Math.PI / 3.2, 0.45, 0]}>
-          <torusGeometry args={[2.12, 0.02, 16, 96]} />
+          <torusGeometry args={[2.12, 0.02, 12, torusSegments]} />
           <meshStandardMaterial
             color="#22d3ee"
             emissive="#06b6d4"
@@ -172,7 +180,7 @@ function HeroCrystalCluster() {
         </mesh>
 
         <mesh ref={ringTwoRef} rotation={[-Math.PI / 3.4, -0.5, 0.6]}>
-          <torusGeometry args={[2.46, 0.017, 16, 96]} />
+          <torusGeometry args={[2.46, 0.017, 12, torusSegments]} />
           <meshStandardMaterial
             color="#ec4899"
             emissive="#db2777"
@@ -188,20 +196,33 @@ function HeroCrystalCluster() {
   );
 }
 
-export function HeroScene3D() {
+export function HeroScene3D({
+  compact = false,
+  active = true,
+}: {
+  compact?: boolean;
+  active?: boolean;
+}) {
   const eventSource =
-    typeof document !== "undefined" ? document.documentElement : undefined;
+    !compact && typeof document !== "undefined"
+      ? document.documentElement
+      : undefined;
 
   return (
     <Canvas
       camera={{ position: [0, 0, 6.5], fov: 45 }}
-      dpr={[1, 1.75]}
-      gl={{ antialias: true, alpha: true }}
+      dpr={compact ? [1, 1.25] : [1, 1.75]}
+      frameloop={active ? "always" : "never"}
+      gl={{
+        antialias: !compact,
+        alpha: true,
+        powerPreference: compact ? "low-power" : "high-performance",
+      }}
       eventSource={eventSource}
       eventPrefix="client"
       style={{ width: "100%", height: "100%" }}
     >
-      <HeroCrystalCluster />
+      <HeroCrystalCluster compact={compact} active={active} />
     </Canvas>
   );
 }

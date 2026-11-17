@@ -1,4 +1,3 @@
-import { BlurFade } from "aura-ui-effects";
 import { Hero } from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Services from "@/components/Services";
@@ -11,39 +10,40 @@ import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { Resume } from "@/components/Resume";
+import { SectionReveal } from "@/components/SectionReveal";
 
 export default function Home() {
   return (
     <>
       <Resume />
       <Hero />
-      <BlurFade>
+      <SectionReveal>
         <Projects />
-      </BlurFade>
-      <BlurFade delay={60}>
+      </SectionReveal>
+      <SectionReveal delay={40}>
         <Services />
-      </BlurFade>
-      <BlurFade delay={60}>
+      </SectionReveal>
+      <SectionReveal delay={40}>
         <SolutionsConfigurator />
-      </BlurFade>
-      <BlurFade delay={60}>
+      </SectionReveal>
+      <SectionReveal delay={40}>
         <LiveSites />
-      </BlurFade>
-      <BlurFade delay={60}>
+      </SectionReveal>
+      <SectionReveal delay={40}>
         <TechStack />
-      </BlurFade>
-      <BlurFade delay={60}>
+      </SectionReveal>
+      <SectionReveal delay={40}>
         <Skills />
-      </BlurFade>
-      <BlurFade delay={60}>
+      </SectionReveal>
+      <SectionReveal delay={40}>
         <Activity />
-      </BlurFade>
-      <BlurFade delay={60}>
+      </SectionReveal>
+      <SectionReveal delay={40}>
         <FAQ />
-      </BlurFade>
-      <BlurFade delay={60}>
+      </SectionReveal>
+      <SectionReveal delay={40}>
         <Contact />
-      </BlurFade>
+      </SectionReveal>
       <Footer />
     </>
   );

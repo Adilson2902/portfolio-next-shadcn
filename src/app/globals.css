@@ -691,6 +691,7 @@
 
 .hero-perspective-grid {
   opacity: 0.75;
+  contain: strict;
 }
 
 .hero-backdrop {
@@ -2814,6 +2815,24 @@
   margin: 0;
 }
 
+/* ==========================================================================
+   GPU-composited Section Reveal (Mobile-first performance)
+   ========================================================================== */
+.reveal-section {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  transition:
+    opacity 0.44s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.44s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-section.is-visible {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
 .floating-whatsapp-cta {
   right: 24px;
   bottom: 24px;
@@ -2914,6 +2933,67 @@
 }
 
 @media (max-width: 760px) {
+  .reveal-section {
+    transform: translate3d(0, 10px, 0);
+    transition-duration: 0.28s;
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 640px;
+  }
+
+  /* Eliminate heavy multi-layer backdrop-filter & fixed grid repaints on mobile GPUs */
+  body::after {
+    display: none;
+  }
+
+  .hero-perspective-grid {
+    opacity: 0.42;
+  }
+
+  .glass-effect,
+  .portrait-3d-card,
+  .portrait-badge,
+  .project-filter-btn,
+  .project-card-wrap,
+  .service-card-wrap,
+  .tool-card-wrap,
+  .live-card-wrap,
+  .tech-grid > .aura-surface,
+  .about-pillars > .aura-surface,
+  .configurator-step-block,
+  .proposal-preview-3d,
+  .activity-item,
+  .contact-panel {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .project-card-wrap,
+  .service-card-wrap,
+  .tool-card-wrap,
+  .live-card-wrap,
+  .tech-grid > .aura-surface,
+  .about-pillars > .aura-surface {
+    background: linear-gradient(
+      155deg,
+      rgba(22, 15, 42, 0.94) 0%,
+      rgba(12, 8, 25, 0.96) 100%
+    );
+    box-shadow: 0 14px 30px -18px rgba(0, 0, 0, 0.85);
+  }
+
+  .portrait-badge {
+    background: rgba(13, 9, 28, 0.95);
+  }
+
+  .preview-float-pill,
+  .gradient-text {
+    animation: none;
+  }
+
+  .tech-orbit-showcase {
+    contain: layout paint;
+  }
+
   .section-shell {
     padding-left: 20px;
     padding-right: 20px;
@@ -3036,6 +3116,23 @@
     bottom: 16px;
     padding: 10px 15px;
     font-size: 12.5px;
+  }
+}
+
+/* Disable hover-only tilt layer promotion on touch screens */
+@media (hover: none), (pointer: coarse) {
+  .project-card-wrap,
+  .service-card-wrap,
+  .tool-card-wrap,
+  .live-card-wrap,
+  .tech-grid > .aura-surface,
+  .about-pillars > .aura-surface,
+  .aura-surface {
+    will-change: auto !important;
+  }
+
+  .project-card:hover .preview-3d-stage {
+    transform: perspective(760px) rotateX(11deg) rotateY(-11deg) !important;
   }
 }
 
