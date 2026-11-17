@@ -12,7 +12,8 @@ export function Navbar() {
         </Link>
         <nav aria-label="Navegação principal">
           <Link href="/#projects">Projetos</Link>
-          <Link href="/#services">Serviços</Link>
+          <Link href="/#live">No ar</Link>
+          <Link href="/#tech">Tecnologias</Link>
           <Link href="/#about">Sobre</Link>
           <Link
             href="/#contact"

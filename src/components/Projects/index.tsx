@@ -25,7 +25,17 @@ export default function Projects() {
               <span className="project-number" aria-hidden="true">
                 {p.number}
               </span>
-              <span className="project-category">{p.category}</span>
+              <div className="project-badges">
+                <span className="project-category">{p.category}</span>
+                <span
+                  className={`status-badge ${p.status}`}
+                  aria-label={
+                    p.status === "live" ? "Projeto no ar" : "Deploy pausado"
+                  }
+                >
+                  {p.status === "live" ? "No ar" : "Pausado"}
+                </span>
+              </div>
             </div>
             <h3>{p.name}</h3>
             <p className="project-description">{p.description}</p>
@@ -44,16 +54,20 @@ export default function Projects() {
                 <li key={t}>{t}</li>
               ))}
             </ul>
-            <a
-              className="project-link"
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Visitar {p.name}
-              <ArrowUpRight size={18} aria-hidden="true" />
-              <span className="sr-only"> (abre em nova aba)</span>
-            </a>
+            {p.status === "live" ? (
+              <a
+                className="project-link"
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visitar {p.name}
+                <ArrowUpRight size={18} aria-hidden="true" />
+                <span className="sr-only"> (abre em nova aba)</span>
+              </a>
+            ) : (
+              <span className="project-link paused">Deploy pausado</span>
+            )}
           </article>
         ))}
         <aside className="project-invitation">

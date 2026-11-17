@@ -36,3 +36,7 @@ global.IntersectionObserver = class IntersectionObserver {
 
 // Mock window.print
 global.print = jest.fn()
+
+// jsdom não implementa WebGL — o probe do HeroBackdrop deve ver "sem suporte"
+// em vez de logar "Not implemented" a cada teste.
+HTMLCanvasElement.prototype.getContext = jest.fn(() => null)

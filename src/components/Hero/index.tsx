@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowDownRight, ArrowUpRight, Download } from "lucide-react";
 import { AnimatedShinyText } from "aura-ui-effects";
 import { Button } from "aura-ui-components";
+import { HeroBackdrop } from "./HeroBackdrop";
 import { profile } from "@/lib/portfolio";
 export function Hero() {
   return (
@@ -11,6 +12,7 @@ export function Hero() {
       className="hero section-shell"
       aria-labelledby="hero-title"
     >
+      <HeroBackdrop />
       <div className="hero-copy">
         <p className="eyebrow">
           <span className="status-dot" />{" "}

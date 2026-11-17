@@ -40,7 +40,10 @@ export function Resume() {
       </section>
       <section>
         <h2>Tecnologias</h2>
-        <p>React · Next.js · React Native · TypeScript · Tailwind CSS · Expo</p>
+        <p>
+          React · Next.js · React Native · TypeScript · Tailwind CSS · Expo ·
+          Node.js · Express · Socket.io · Supabase · Vercel · Three.js
+        </p>
       </section>
     </article>
   );

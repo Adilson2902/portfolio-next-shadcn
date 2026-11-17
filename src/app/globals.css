@@ -553,12 +553,25 @@ summary:focus-visible {
   top: 12px;
 }
 .hero {
+  position: relative;
+  overflow: hidden;
   padding-top: 86px;
   padding-bottom: 78px;
   display: grid;
   grid-template-columns: 1.55fr 1fr;
   align-items: center;
   gap: 64px;
+}
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.55;
+  pointer-events: none;
+}
+.hero > :not(.hero-backdrop) {
+  position: relative;
+  z-index: 1;
 }
 .eyebrow {
   display: flex;
@@ -736,10 +749,16 @@ h2 {
   padding: 28px;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.2s;
+  transform-style: preserve-3d;
+  transition:
+    border-color 0.2s,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 .project-card:hover {
   border-color: #8b72b8;
+  transform: perspective(1000px) rotateX(1.6deg) translateY(-3px);
+  box-shadow: 0 20px 42px -20px rgba(139, 92, 246, 0.45);
 }
 .project-top {
   display: flex;
@@ -762,6 +781,32 @@ h2 {
   padding: 5px 8px;
   border-radius: 5px;
   text-align: right;
+}
+.project-badges {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+.status-badge {
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: 1px solid;
+  line-height: 1.4;
+}
+.status-badge.live {
+  color: #6ee7b7;
+  border-color: #2f5d4a;
+  background: #14261f;
+}
+.status-badge.paused {
+  color: #b6adc5;
+  border-color: #443951;
+  background: #211d2b;
 }
 .project-card h3 {
   font-size: 23px;
@@ -825,6 +870,10 @@ h2 {
   min-height: 44px;
   line-height: 1.5;
 }
+.project-link.paused {
+  color: #8d8199;
+  justify-content: flex-start;
+}
 .project-invitation {
   padding: 34px 28px;
   border: 1px dashed #534563;
@@ -876,6 +925,120 @@ h2 {
   font-size: 11px;
   line-height: 1.8;
   margin-top: 22px;
+}
+.live-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 14px;
+}
+.live-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: linear-gradient(140deg, #1e1a29, #15141e);
+  border: 1px solid #383043;
+  border-radius: 14px;
+  padding: 22px;
+  text-decoration: none;
+  transform-style: preserve-3d;
+  transition:
+    border-color 0.2s,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.live-card:hover {
+  border-color: #8b72b8;
+  transform: perspective(1000px) rotateX(1.6deg) translateY(-3px);
+  box-shadow: 0 20px 42px -20px rgba(139, 92, 246, 0.45);
+}
+.live-card h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #e6deef;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.live-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.65);
+}
+.live-domain {
+  color: #c3a8f9;
+  font-size: 12px;
+  word-break: break-all;
+}
+.live-card p {
+  color: #b6adc5;
+  font-size: 12.5px;
+  line-height: 1.65;
+  margin: 0;
+  flex: 1;
+}
+.live-cta {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  color: #e3d5ff;
+  font-size: 12px;
+}
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px 44px;
+}
+.tech-group h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #d5c4f4;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.tech-group .tags {
+  margin: 0;
+}
+.tech-group .tags li {
+  font-size: 11px;
+}
+.activity-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.activity-item {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 20px;
+  padding: 19px 0;
+  border-bottom: 1px solid #3d324a;
+}
+.activity-item:last-child {
+  border-bottom: 0;
+}
+.activity-date {
+  color: #c3a8f9;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding-top: 3px;
+}
+.activity-item h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #e6deef;
+}
+.activity-item p {
+  margin: 0;
+  color: #bcb2ca;
+  font-size: 13.5px;
+  line-height: 1.7;
 }
 .about-section,
 .faq-section {
@@ -1065,6 +1228,10 @@ h2 {
   .service-card > span {
     margin-top: 15px;
   }
+  .activity-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
   .contact-panel {
     padding: 44px 23px;
   }
@@ -1081,7 +1248,8 @@ h2 {
   }
 }
 @media (max-width: 520px) {
-  .project-grid {
+  .project-grid,
+  .live-grid {
     grid-template-columns: 1fr;
   }
   .hero h1 {
