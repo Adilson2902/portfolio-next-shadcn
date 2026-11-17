@@ -2,16 +2,20 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { motion } from "motion/react";
 
-export function ThemeSwitcher() {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+const emptySubscribe = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+export function ThemeSwitcher() {
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    getClientSnapshot,
+    getServerSnapshot,
+  );
+  const { theme, setTheme } = useTheme();
 
   if (!mounted) {
     return (

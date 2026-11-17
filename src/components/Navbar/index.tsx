@@ -1,4 +1,13 @@
 import Link from "next/link";
+
+const navLinks = [
+  { href: "/#projects", label: "Projetos" },
+  { href: "/#services", label: "Soluções" },
+  { href: "/#solutions", label: "Simulador" },
+  { href: "/#live", label: "No ar" },
+  { href: "/#tech", label: "Stack" },
+];
+
 export function Navbar() {
   return (
     <header className="site-header">
@@ -11,10 +20,11 @@ export function Navbar() {
           a<span>.</span>
         </Link>
         <nav aria-label="Navegação principal">
-          <Link href="/#projects">Projetos</Link>
-          <Link href="/#live">No ar</Link>
-          <Link href="/#tech">Tecnologias</Link>
-          <Link href="/#about">Sobre</Link>
+          {navLinks.map((item) => (
+            <Link key={item.href} href={item.href}>
+              {item.label}
+            </Link>
+          ))}
           <Link
             href="/#contact"
             className="nav-contact"

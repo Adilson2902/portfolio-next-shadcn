@@ -2,11 +2,8 @@
 import dynamic from "next/dynamic";
 import { useSyncExternalStore } from "react";
 
-const CanvasRevealEffect = dynamic(
-  () =>
-    import("@/components/ui/canvas-reveal-effect").then(
-      (m) => m.CanvasRevealEffect,
-    ),
+const HeroScene3D = dynamic(
+  () => import("./HeroScene3D").then((m) => m.HeroScene3D),
   { ssr: false },
 );
 
@@ -36,18 +33,7 @@ export function HeroBackdrop() {
   if (!enabled) return null;
   return (
     <div className="hero-backdrop" aria-hidden="true">
-      <CanvasRevealEffect
-        colors={[
-          [139, 92, 246],
-          [236, 72, 153],
-          [34, 211, 238],
-        ]}
-        dotSize={3}
-        animationSpeed={0.5}
-        opacities={[0.08, 0.08, 0.14, 0.16, 0.22, 0.26, 0.32, 0.38, 0.46, 0.55]}
-        showGradient={false}
-        containerClassName="bg-transparent"
-      />
+      <HeroScene3D />
     </div>
   );
 }

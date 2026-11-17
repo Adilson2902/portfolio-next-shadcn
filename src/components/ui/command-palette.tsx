@@ -27,6 +27,11 @@ export function CommandPalette({ items }: CommandPaletteProps) {
       item.description?.toLowerCase().includes(search.toLowerCase())
   );
 
+  const closePalette = () => {
+    setIsOpen(false);
+    setSearch("");
+  };
+
   // Atalho de teclado Cmd+K / Ctrl+K
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -36,6 +41,7 @@ export function CommandPalette({ items }: CommandPaletteProps) {
       }
       if (e.key === "Escape") {
         setIsOpen(false);
+        setSearch("");
       }
     };
 
@@ -48,13 +54,15 @@ export function CommandPalette({ items }: CommandPaletteProps) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
-      setSearch("");
     }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [isOpen]);
 
   const handleAction = (action: () => void) => {
     action();
-    setIsOpen(false);
+    closePalette();
   };
 
   return (
@@ -80,7 +88,7 @@ export function CommandPalette({ items }: CommandPaletteProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
+              onClick={closePalette}
               className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100]"
             />
 

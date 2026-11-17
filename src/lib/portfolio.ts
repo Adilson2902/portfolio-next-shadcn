@@ -10,6 +10,17 @@ export const profile = {
 
 export type ProjectStatus = "live" | "paused";
 
+export type ProjectPreviewType =
+  | "hub"
+  | "design-system"
+  | "realtime"
+  | "dashboard"
+  | "marketplace"
+  | "booking"
+  | "event";
+
+export type ProjectAudience = "product" | "business";
+
 export interface Project {
   name: string;
   category: string;
@@ -20,6 +31,11 @@ export interface Project {
   stack: string[];
   url: string;
   status: ProjectStatus;
+  previewType: ProjectPreviewType;
+  audience: ProjectAudience;
+  accent: string;
+  nicheLabel: string;
+  commercialPitch: string;
 }
 
 // Describe scope, never substitute objectives for measured commercial results.
@@ -37,6 +53,12 @@ export const projects: Project[] = [
     stack: ["Next.js", "TypeScript", "Supabase", "Expo"],
     url: "https://www.toolspace.com.br",
     status: "live",
+    previewType: "hub",
+    audience: "product",
+    accent: "#8b5cf6",
+    nicheLabel: "Ecossistema SaaS & Utilitários",
+    commercialPitch:
+      "Quer lançar um portal de ferramentas online, calculadoras ou micro-SaaS por assinatura? Estruturo do catálogo ao painel e app.",
   },
   {
     name: "Aura UI",
@@ -51,6 +73,12 @@ export const projects: Project[] = [
     stack: ["TypeScript", "React", "Tailwind CSS", "pnpm"],
     url: "https://aura.toolspace.com.br",
     status: "live",
+    previewType: "design-system",
+    audience: "product",
+    accent: "#a855f7",
+    nicheLabel: "Design System & Efeitos 3D",
+    commercialPitch:
+      "Ideal para empresas e produtos digitais que buscam identidade visual própria, biblioteca de componentes e interações 3D consistentes.",
   },
   {
     name: "Sintonia",
@@ -65,6 +93,12 @@ export const projects: Project[] = [
     stack: ["Vite", "React", "TypeScript", "Express", "Socket.io"],
     url: "https://sintonia.toolspace.com.br",
     status: "live",
+    previewType: "realtime",
+    audience: "product",
+    accent: "#ec4899",
+    nicheLabel: "App Social em Tempo Real",
+    commercialPitch:
+      "Arquitetura sob medida para plataformas interativas com chat ao vivo, quizzes, notificações instantâneas e recursos no navegador.",
   },
   {
     name: "Auto Escola Manager",
@@ -79,6 +113,12 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Tailwind CSS"],
     url: "https://auto-escola-manager-uub5.vercel.app",
     status: "paused",
+    previewType: "dashboard",
+    audience: "business",
+    accent: "#06b6d4",
+    nicheLabel: "Gestão p/ Autoescolas & Cursos",
+    commercialPitch:
+      "Modelo pronto para adaptar à sua autoescola ou escola técnica com controle de alunos, instrutores, frota e agenda de aulas.",
   },
   {
     name: "Veículos Maceió",
@@ -93,6 +133,12 @@ export const projects: Project[] = [
     stack: ["Next.js", "React Native", "Supabase"],
     url: "https://www.veiculosmaceio.com.br",
     status: "paused",
+    previewType: "marketplace",
+    audience: "business",
+    accent: "#10b981",
+    nicheLabel: "Portal & Catálogo Automotivo",
+    commercialPitch:
+      "Base adaptável para revendas, multimarcas ou portais regionais exibirem estoque filtrável e receberem contatos direto no WhatsApp.",
   },
   {
     name: "Estetico Masso",
@@ -107,6 +153,12 @@ export const projects: Project[] = [
     stack: ["Next.js", "React Native", "TypeScript"],
     url: "https://www.esteticomasso.com.br",
     status: "paused",
+    previewType: "booking",
+    audience: "business",
+    accent: "#f472b6",
+    nicheLabel: "Site & Agenda p/ Clínicas",
+    commercialPitch:
+      "Vitrine digital para clínicas de estética, massoterapia ou estúdios apresentarem procedimentos e organizarem reservas online.",
   },
   {
     name: "Sites para Casamento",
@@ -120,6 +172,12 @@ export const projects: Project[] = [
     stack: ["Next.js", "Expo", "NestJS"],
     url: "https://www.sitesparacasamento.com.br",
     status: "paused",
+    previewType: "event",
+    audience: "business",
+    accent: "#f59e0b",
+    nicheLabel: "Plataforma p/ Eventos & Listas",
+    commercialPitch:
+      "Experiência personalizável para assessorias e empreendedores oferecerem páginas de eventos com listas de presentes e confirmação.",
   },
 ];
 
@@ -182,7 +240,15 @@ export interface TechGroup {
 export const techGroups: TechGroup[] = [
   {
     title: "Front-end web",
-    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Vite", "shadcn/ui"],
+    items: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "Tailwind CSS",
+      "Vite",
+      "shadcn/ui",
+    ],
   },
   {
     title: "Mobile",
@@ -190,23 +256,48 @@ export const techGroups: TechGroup[] = [
   },
   {
     title: "Back-end & tempo real",
-    items: ["Node.js", "Express", "Socket.io", "Supabase"],
+    items: [
+      "Node.js",
+      "NestJS",
+      "Express",
+      "Socket.io",
+      "Supabase",
+      "PostgreSQL",
+    ],
   },
   {
     title: "IA aplicada",
     items: [
-      "APIs de LLM (Gemini, Groq, OpenRouter)",
+      "Google Gemini",
+      "APIs de LLM (Groq & OpenRouter)",
       "Visão computacional",
       "Prompt engineering",
     ],
   },
   {
-    title: "Design system",
-    items: ["Aura UI", "Radix UI", "Motion", "Tailwind v4"],
+    title: "Design system, 3D & motion",
+    items: [
+      "Aura UI",
+      "Three.js",
+      "WebGL",
+      "Motion",
+      "Radix UI",
+      "Tailwind v4",
+    ],
   },
   {
-    title: "Infra & qualidade",
-    items: ["Vercel", "Render", "GitHub", "pnpm", "Vitest", "ESLint", "Three.js"],
+    title: "Infra, testes & qualidade",
+    items: [
+      "Vercel",
+      "Render",
+      "GitHub",
+      "Git",
+      "pnpm",
+      "Jest",
+      "Testing Library",
+      "Vitest",
+      "ESLint",
+    ],
   },
 ];
 

@@ -16,4 +16,16 @@ describe("LiveSites", () => {
       expect(link).toHaveAttribute("target", "_blank");
     });
   });
+
+  it("renders the 3D browser bar and domain label inside each site card", () => {
+    const { container } = render(<LiveSites />);
+    expect(container.querySelectorAll(".live-browser-bar")).toHaveLength(
+      liveSites.length,
+    );
+    liveSites.forEach((site) => {
+      expect(
+        screen.getByText(site.url.replace("https://", "")),
+      ).toBeInTheDocument();
+    });
+  });
 });
