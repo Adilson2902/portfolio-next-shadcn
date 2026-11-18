@@ -3,6 +3,7 @@ import {
   liveSites,
   techGroups,
   activity,
+  faqs,
   profile,
   type ProjectPreviewType,
 } from "./portfolio";
@@ -85,6 +86,15 @@ describe("portfolio data", () => {
       expect(a.period).toBeTruthy();
       expect(a.title).toBeTruthy();
       expect(a.description).toBeTruthy();
+    });
+  });
+
+  it("exposes verified FAQ entries without fabricated commercial percentages", () => {
+    expect(faqs.length).toBeGreaterThanOrEqual(7);
+    faqs.forEach((item) => {
+      expect(item.question.trim().length).toBeGreaterThan(0);
+      expect(item.answer.trim().length).toBeGreaterThan(0);
+      expect(item.answer).not.toMatch(/200%|500\+|35%|60%/);
     });
   });
 });

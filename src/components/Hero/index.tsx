@@ -6,6 +6,7 @@ import {
   Download,
   MessageCircle,
   Sparkles,
+  Zap,
 } from "lucide-react";
 import { AnimatedShinyText, LayeredCard, PerspectiveGrid } from "aura-ui-effects";
 import { Button } from "aura-ui-components";
@@ -18,8 +19,8 @@ const HERO_TECHS = [
   "React",
   "TypeScript",
   "Three.js",
-  "Expo",
-  "Supabase",
+  "Cursor",
+  "Claude",
 ];
 
 export function Hero() {
@@ -33,13 +34,14 @@ export function Hero() {
       className="hero section-shell"
       aria-labelledby="hero-title"
     >
+      <div className="hero-aurora-beam" aria-hidden="true" />
       <PerspectiveGrid className="hero-perspective-grid" aria-hidden="true" />
       <HeroBackdrop />
       <div className="hero-copy">
         <p className="eyebrow">
           <span className="status-dot" aria-hidden="true" />{" "}
           <AnimatedShinyText>
-            Sites comerciais · Ferramentas SaaS · Apps 3D
+            Sites comerciais · Ferramentas SaaS · Entrega ágil com IA &amp; 3D
           </AnimatedShinyText>
         </p>
         <h1 id="hero-title">
@@ -52,6 +54,15 @@ export function Hero() {
           3D. Criador do <strong>Toolspace</strong> — no ar com mais de 300
           ferramentas gratuitas e app Android.
         </p>
+        <div className="hero-velocity-strip">
+          <Zap size={14} aria-hidden="true" />
+          <TechIcon name="Cursor" size={14} />
+          <TechIcon name="Claude" size={14} />
+          <TechIcon name="ChatGPT / OpenAI" size={14} />
+          <span>
+            Fluxo acelerado com Cursor, Claude &amp; GPT · Código próprio testado
+          </span>
+        </div>
         <div className="actions">
           <Button asChild size="lg" variant="gradient">
             <a href="#projects">
@@ -120,7 +131,7 @@ export function Hero() {
         </LayeredCard>
         <div className="portrait-caption">
           <span>Do conceito à interface 3D em produção.</span>
-          <span>React · Next.js · Three.js · React Native</span>
+          <span>Next.js · Three.js · Cursor &amp; Claude · React Native</span>
         </div>
       </div>
     </section>

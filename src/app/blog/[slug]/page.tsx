@@ -1,158 +1,256 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Image from "next/image";
-import { Calendar, Clock, Tag, ArrowLeft } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
-import { Breadcrumbs } from "@/components/ui/breadcrumbs";
-import { SocialShare } from "@/components/ui/social-share";
+import { notFound } from "next/navigation";
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  Calendar,
+  Clock,
+  Lightbulb,
+  MessageCircle,
+  Tag,
+} from "lucide-react";
+import { Spotlight } from "aura-ui-effects";
+import { TechIcon } from "@/components/TechIcon";
+import { articles, getArticleBySlug } from "@/lib/articles";
+import { profile } from "@/lib/portfolio";
 
-// Dados de exemplo
-const blogPosts: Record<string, any> = {
-  "otimizando-performance-nextjs": {
-    title: "Otimizando Performance em Next.js 14",
-    excerpt: "Aprenda técnicas avançadas para melhorar o desempenho da sua aplicação Next.js",
-    image: "/no-img.png",
-    date: "2024-01-15",
-    readTime: "8 min",
-    category: "Next.js",
-    tags: ["Next.js", "Performance", "SSR"],
-    content: `
-# Otimizando Performance em Next.js 14
-
-Next.js 14 trouxe diversas melhorias de performance que podem transformar sua aplicação.
-
-## Server Components
-
-Os Server Components são uma das maiores inovações. Eles permitem renderizar componentes no servidor, reduzindo o JavaScript enviado ao cliente.
-
-\`\`\`tsx
-// app/page.tsx
-async function Page() {
-  const data = await fetch('https://api.example.com/data');
-  return <div>{/* seu conteúdo */}</div>;
+export function generateStaticParams() {
+  return articles.map((article) => ({ slug: article.slug }));
 }
-\`\`\`
 
-## Image Optimization
-
-Use o componente Image do Next.js para otimização automática:
-
-\`\`\`tsx
-import Image from 'next/image';
-
-<Image src="/photo.jpg" alt="Foto" width={800} height={600} priority />
-\`\`\`
-
-## Conclusão
-
-Aplicar essas técnicas pode melhorar significativamente a performance da sua aplicação.
-    `,
-  },
-};
-
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
-  const post = blogPosts[slug];
-  
-  if (!post) {
+  const article = getArticleBySlug(slug);
+
+  if (!article) {
     return {
-      title: "Post não encontrado",
+      title: "Artigo não encontrado",
     };
   }
 
   return {
-    title: `${post.title} | Blog Adilson`,
-    description: post.excerpt,
+    title: article.seoTitle,
+    description: article.description,
+    keywords: article.keywords,
+    alternates: { canonical: `/blog/${article.slug}` },
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: article.seoTitle,
+      description: article.description,
       type: "article",
-      publishedTime: post.date,
-      authors: ["Adilson"],
+      locale: "pt_BR",
+      url: `${profile.site}/blog/${article.slug}`,
+      publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt,
+      authors: [profile.name],
+      tags: article.keywords,
+      images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.seoTitle,
+      description: article.description,
+      images: ["/opengraph-image"],
     },
   };
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
-  const post = blogPosts[slug];
+  const article = getArticleBySlug(slug);
 
-  if (!post) {
+  if (!article) {
     notFound();
   }
 
+  const relatedArticles = articles.filter((item) => item.slug !== article.slug);
+  const whatsappHref = `${profile.whatsapp}?text=${encodeURIComponent(article.whatsappPrompt)}`;
+
+  const articleStructuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: article.title,
+        description: article.description,
+        inLanguage: "pt-BR",
+        datePublished: article.publishedAt,
+        dateModified: article.updatedAt,
+        mainEntityOfPage: `${profile.site}/blog/${article.slug}`,
+        keywords: article.keywords.join(", "),
+        author: {
+          "@type": "Person",
+          name: profile.name,
+          url: profile.site,
+        },
+        publisher: {
+          "@type": "Person",
+          name: profile.name,
+          url: profile.site,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Início",
+            item: profile.site,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Blog",
+            item: `${profile.site}/blog`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: article.title,
+            item: `${profile.site}/blog/${article.slug}`,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
-    <div className="min-h-screen pt-32 pb-20">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <Breadcrumbs
-          items={[
-            { label: "Blog", href: "/blog" },
-            { label: post.title, href: `/blog/${slug}` },
-          ]}
-        />
+    <div className="section-shell article-shell">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleStructuredData),
+        }}
+      />
 
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors mb-8"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Voltar para o blog
+      <div className="blog-topbar">
+        <Link href="/blog" className="blog-back-link">
+          <ArrowLeft size={15} aria-hidden="true" />
+          <span>Todos os artigos</span>
         </Link>
-
-        <article>
-          <div className="mb-8">
-            <div className="inline-block px-3 py-1 rounded-full glass-effect text-sm text-purple-400 mb-4">
-              {post.category}
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold font-space-grotesk mb-4">
-              {post.title}
-            </h1>
-            
-            <div className="flex items-center gap-6 text-sm text-gray-500 mb-6">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4" />
-                <span>{new Date(post.date).toLocaleDateString("pt-BR")}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                <span>{post.readTime}</span>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="flex flex-wrap gap-2">
-                {post.tags.map((tag: string) => (
-                  <span
-                    key={tag}
-                    className="flex items-center gap-1 px-3 py-1 text-xs rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20"
-                  >
-                    <Tag className="w-3 h-3" />
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <SocialShare title={post.title} />
-            </div>
-          </div>
-
-          <div className="relative h-96 rounded-2xl overflow-hidden mb-12">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-
-          <div className="prose prose-invert prose-purple max-w-none">
-            <div
-              className="text-gray-300 leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, "<br/>") }}
-            />
-          </div>
-        </article>
+        <Link href="/" className="blog-back-link">
+          <span>Portfólio principal</span>
+        </Link>
       </div>
+
+      <article className="article-container">
+        <header className="article-header">
+          <div className="insight-card-meta">
+            <span className="insight-category">{article.category}</span>
+            <div className="blog-card-dates">
+              <span>
+                <Calendar size={13} aria-hidden="true" />
+                {new Date(article.publishedAt).toLocaleDateString("pt-BR")}
+              </span>
+              <span>
+                <Clock size={13} aria-hidden="true" />
+                {article.readTime} de leitura
+              </span>
+            </div>
+          </div>
+
+          <h1>{article.title}</h1>
+          <p className="article-description">{article.description}</p>
+
+          <ul className="tags article-stack" aria-label="Tecnologias relacionadas">
+            {article.stack.map((tech) => (
+              <li key={tech}>
+                <TechIcon name={tech} size={14} />
+                <span>{tech}</span>
+              </li>
+            ))}
+          </ul>
+        </header>
+
+        <aside className="article-takeaway" aria-label="Resumo estratégico">
+          <div className="article-takeaway-head">
+            <Lightbulb size={16} aria-hidden="true" />
+            <span>Em resumo</span>
+          </div>
+          <p>{article.takeaway}</p>
+        </aside>
+
+        <div className="article-prose">
+          {article.sections.map((section) => (
+            <section key={section.heading} className="article-section">
+              <h2>{section.heading}</h2>
+              {section.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+              {section.bullets && section.bullets.length > 0 ? (
+                <ul>
+                  {section.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              ) : null}
+            </section>
+          ))}
+        </div>
+
+        <footer className="article-footer-tags">
+          {article.keywords.map((keyword) => (
+            <span key={keyword} className="article-keyword-chip">
+              <Tag size={12} aria-hidden="true" />
+              {keyword}
+            </span>
+          ))}
+        </footer>
+      </article>
+
+      <Spotlight className="article-cta-box" size={440} intensity={0.12}>
+        <p className="eyebrow">Próximo passo</p>
+        <h2>Quer aplicar essa estratégia no seu site ou ferramenta?</h2>
+        <p>
+          Converse comigo no WhatsApp ou use o simulador interativo para montar
+          o escopo ideal do seu projeto.
+        </p>
+        <div className="actions">
+          <a
+            className="button primary"
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <MessageCircle size={16} aria-hidden="true" />
+            <span>Orçar pelo WhatsApp</span>
+            <span className="sr-only"> (abre em nova aba)</span>
+          </a>
+          <Link className="button secondary" href="/#solutions">
+            <span>Simular escopo em 30s</span>
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </Link>
+        </div>
+      </Spotlight>
+
+      <section className="article-related" aria-labelledby="related-heading">
+        <h2 id="related-heading">Continue explorando</h2>
+        <div className="article-related-grid">
+          {relatedArticles.map((item) => (
+            <Link
+              key={item.slug}
+              href={`/blog/${item.slug}`}
+              className="article-related-card"
+            >
+              <span className="insight-category">{item.category}</span>
+              <h3>{item.title}</h3>
+              <span className="insight-read-link">
+                <span>Ler guia</span>
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

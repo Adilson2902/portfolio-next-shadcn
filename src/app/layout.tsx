@@ -7,6 +7,7 @@ import {
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { FloatingCTA } from "@/components/FloatingCTA";
+import { JsonLd } from "@/components/JsonLd";
 import { profile } from "@/lib/portfolio";
 
 const spaceGrotesk = Space_Grotesk({
@@ -28,17 +29,45 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const description =
-  "Adilson Adriano — desenvolvimento de sites profissionais, sistemas web, ferramentas online e SaaS, aplicativos mobile e interfaces 3D com React, Next.js e React Native.";
+  "Adilson Adriano — desenvolvimento de sites profissionais de alta conversão, ferramentas online, micro-SaaS, sistemas web, aplicativos mobile e interfaces 3D com entrega acelerada por Cursor, Claude, GPT e Gemini.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.site),
   title: {
-    default: "Adilson Adriano | Sites, Sistemas Web, SaaS & Interfaces 3D",
+    default: "Adilson Adriano | Sites, Sistemas Web, Ferramentas SaaS & 3D",
     template: "%s | Adilson Adriano",
   },
   description,
-  authors: [{ name: profile.name }],
+  keywords: [
+    "criação de sites para empresas",
+    "landing page alta conversão",
+    "desenvolvedor Next.js React Brasil",
+    "criar calculadora online",
+    "desenvolvimento micro-saas",
+    "sistemas web sob medida",
+    "interfaces 3D Three.js",
+    "desenvolvedor React Native Expo",
+    "desenvolvimento rápido com IA Cursor Claude",
+    "Adilson Adriano",
+    "Toolspace",
+    "Aura UI",
+  ],
+  authors: [{ name: profile.name, url: profile.site }],
+  creator: profile.name,
+  publisher: profile.name,
+  category: "technology",
   alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -50,13 +79,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adilson Adriano | Sites, Sistemas Web, SaaS & Interfaces 3D",
+    title: "Adilson Adriano | Sites, Sistemas Web, Ferramentas SaaS & 3D",
     description,
     images: ["/opengraph-image"],
   },
 };
 
-export const viewport: Viewport = { themeColor: "#090514" };
+export const viewport: Viewport = { themeColor: "#080412" };
 
 export default function RootLayout({
   children,
@@ -68,6 +97,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${plusJakartaSans.variable} ${jetbrainsMono.variable}`}
     >
       <body>
+        <JsonLd />
         <a className="skip-link" href="#main">
           Pular para o conteúdo
         </a>

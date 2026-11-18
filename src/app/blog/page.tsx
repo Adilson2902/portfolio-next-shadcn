@@ -1,132 +1,136 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { Calendar, Clock, Tag } from "lucide-react";
-import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import type { CSSProperties } from "react";
+import { ArrowLeft, ArrowUpRight, BookOpen, Calendar, Clock, MessageCircle } from "lucide-react";
+import { Card3D, Spotlight } from "aura-ui-effects";
+import { TechIcon } from "@/components/TechIcon";
+import { articles } from "@/lib/articles";
+import { profile } from "@/lib/portfolio";
 
 export const metadata: Metadata = {
-  title: "Blog | Adilson - Desenvolvedor Front-end",
-  description: "Artigos sobre React, Next.js, React Native e desenvolvimento web moderno",
+  title: "Guias & Artigos | Sites, Ferramentas Online, 3D e IA",
+  description:
+    "Artigos práticos de Adilson Adriano sobre SEO para empresas, calculadoras que geram leads, engenharia rápida com Cursor/Claude/GPT e interfaces 3D leves no celular.",
+  alternates: { canonical: "/blog" },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: `${profile.site}/blog`,
+    title: "Guias & Artigos | Adilson Adriano",
+    description:
+      "Estratégias reais de SEO, desenvolvimento com IA, web 3D e ferramentas online para atrair clientes e criar produtos digitais.",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
+  },
 };
 
-// Dados de exemplo - você pode substituir por dados de um CMS ou arquivos MDX
-const blogPosts = [
-  {
-    id: 1,
-    slug: "otimizando-performance-nextjs",
-    title: "Otimizando Performance em Next.js 14",
-    excerpt: "Aprenda técnicas avançadas para melhorar o desempenho da sua aplicação Next.js com SSR, ISR e App Router.",
-    image: "/no-img.png",
-    date: "2024-01-15",
-    readTime: "8 min",
-    category: "Next.js",
-    tags: ["Next.js", "Performance", "SSR"],
-  },
-  {
-    id: 2,
-    slug: "react-hooks-avancados",
-    title: "React Hooks Avançados: useCallback e useMemo",
-    excerpt: "Entenda quando e como usar useCallback e useMemo para otimizar seus componentes React.",
-    image: "/no-img.png",
-    date: "2024-01-10",
-    readTime: "6 min",
-    category: "React",
-    tags: ["React", "Hooks", "Performance"],
-  },
-  {
-    id: 3,
-    slug: "typescript-patterns",
-    title: "Padrões TypeScript para React Developers",
-    excerpt: "Descubra padrões de TypeScript que vão melhorar a qualidade e manutenibilidade do seu código React.",
-    image: "/no-img.png",
-    date: "2024-01-05",
-    readTime: "10 min",
-    category: "TypeScript",
-    tags: ["TypeScript", "React", "Best Practices"],
-  },
-  {
-    id: 4,
-    slug: "animacoes-framer-motion",
-    title: "Criando Animações Incríveis com Framer Motion",
-    excerpt: "Um guia completo sobre como criar animações fluidas e performáticas usando Framer Motion.",
-    image: "/no-img.png",
-    date: "2023-12-28",
-    readTime: "12 min",
-    category: "Animation",
-    tags: ["Framer Motion", "Animation", "UX"],
-  },
-];
-
 export default function BlogPage() {
+  const whatsappHref = `${profile.whatsapp}?text=${encodeURIComponent(
+    "Olá, Adilson! Li os guias do seu blog e quero conversar sobre um projeto para o meu negócio.",
+  )}`;
+
   return (
-    <div className="min-h-screen pt-32 pb-20">
-      <div className="container mx-auto px-4 max-w-7xl">
-        <Breadcrumbs items={[{ label: "Blog", href: "/blog" }]} />
-
-        <div className="mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold font-space-grotesk mb-4">
-            <span className="gradient-text">Blog</span>
-          </h1>
-          <p className="text-gray-400 text-lg max-w-3xl">
-            Compartilho conhecimentos sobre desenvolvimento front-end, dicas práticas e novidades do ecossistema React.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {blogPosts.map((post) => (
-            <Link
-              key={post.id}
-              href={`/blog/${post.slug}`}
-              className="group glass-effect rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all overflow-hidden modern-hover"
-            >
-              <div className="relative h-64 overflow-hidden">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                <div className="absolute top-4 left-4 px-3 py-1 rounded-full glass-effect text-sm text-purple-400">
-                  {post.category}
-                </div>
-              </div>
-
-              <div className="p-6">
-                <h2 className="text-xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">
-                  {post.title}
-                </h2>
-                <p className="text-gray-400 mb-4 leading-relaxed">
-                  {post.excerpt}
-                </p>
-
-                <div className="flex items-center gap-4 text-sm text-gray-500">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    <span>{new Date(post.date).toLocaleDateString("pt-BR")}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    <span>{post.readTime}</span>
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="flex items-center gap-1 px-3 py-1 text-xs rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20"
-                    >
-                      <Tag className="w-3 h-3" />
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
+    <div className="section-shell blog-shell">
+      <div className="blog-topbar">
+        <Link href="/" className="blog-back-link">
+          <ArrowLeft size={15} aria-hidden="true" />
+          <span>Voltar ao portfólio</span>
+        </Link>
+        <span className="blog-topbar-pill">Guias técnicos &amp; estratégicos</span>
       </div>
+
+      <header className="blog-hero">
+        <p className="eyebrow">
+          <span className="status-dot" aria-hidden="true" />
+          Blog &amp; Arquitetura Digital
+        </p>
+        <h1>
+          Conteúdo para atrair clientes,
+          <span> escalar ferramentas e entregar rápido.</span>
+        </h1>
+        <p className="blog-hero-lead">
+          Notas práticas baseadas na construção do Toolspace (+300 ferramentas no
+          ar), do Aura UI e de projetos comerciais com Next.js, Three.js, Cursor,
+          Claude e ChatGPT.
+        </p>
+      </header>
+
+      <div className="blog-grid">
+        {articles.map((article) => (
+          <Card3D
+            key={article.slug}
+            maxTilt={7}
+            scale={1.015}
+            className="insight-card-wrap !p-0"
+          >
+            <article
+              className="insight-card blog-article-card"
+              style={{ "--insight-accent": article.accent } as CSSProperties}
+            >
+              <div className="insight-card-meta">
+                <span className="insight-category">{article.category}</span>
+                <div className="blog-card-dates">
+                  <span>
+                    <Calendar size={12} aria-hidden="true" />
+                    {new Date(article.publishedAt).toLocaleDateString("pt-BR")}
+                  </span>
+                  <span>
+                    <Clock size={12} aria-hidden="true" />
+                    {article.readTime}
+                  </span>
+                </div>
+              </div>
+
+              <h2>
+                <Link href={`/blog/${article.slug}`}>{article.title}</Link>
+              </h2>
+
+              <p className="insight-description">{article.description}</p>
+
+              <p className="blog-takeaway-snippet">{article.takeaway}</p>
+
+              <ul className="tags insight-tags" aria-label={`Tecnologias em ${article.title}`}>
+                {article.stack.map((tech) => (
+                  <li key={tech}>
+                    <TechIcon name={tech} size={13} />
+                    <span>{tech}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Link href={`/blog/${article.slug}`} className="insight-read-link">
+                <BookOpen size={14} aria-hidden="true" />
+                <span>Ler artigo completo</span>
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </Link>
+            </article>
+          </Card3D>
+        ))}
+      </div>
+
+      <Spotlight className="article-cta-box" size={440} intensity={0.12}>
+        <p className="eyebrow">Aplicar no seu projeto</p>
+        <h2>Quer tirar um site, ferramenta ou sistema do papel?</h2>
+        <p>
+          Simule o escopo ideal em 30 segundos ou envie uma mensagem direta para
+          discutirmos a melhor solução para o seu momento.
+        </p>
+        <div className="actions">
+          <a
+            className="button primary"
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <MessageCircle size={16} aria-hidden="true" />
+            <span>Conversar no WhatsApp</span>
+            <span className="sr-only"> (abre em nova aba)</span>
+          </a>
+          <Link className="button secondary" href="/#solutions">
+            <span>Abrir Simulador de Projeto</span>
+            <ArrowUpRight size={15} aria-hidden="true" />
+          </Link>
+        </div>
+      </Spotlight>
     </div>
   );
 }

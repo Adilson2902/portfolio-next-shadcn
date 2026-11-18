@@ -1,11 +1,13 @@
 import type { ComponentType } from "react";
 import {
+  SiClaude,
   SiEslint,
   SiExpo,
   SiExpress,
   SiFramer,
   SiGit,
   SiGithub,
+  SiGithubcopilot,
   SiGooglegemini,
   SiJavascript,
   SiJest,
@@ -13,6 +15,7 @@ import {
   SiNextdotjs,
   SiNodedotjs,
   SiOpenai,
+  SiPerplexity,
   SiPnpm,
   SiPostgresql,
   SiRadixui,
@@ -51,6 +54,42 @@ interface TechEntry {
   color: string;
 }
 
+function CursorBrandIcon({
+  size = 16,
+  color = "#38bdf8",
+  className,
+  "aria-hidden": ariaHidden = true,
+}: {
+  size?: number | string;
+  color?: string;
+  className?: string;
+  "aria-hidden"?: boolean | "true" | "false";
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      className={className}
+      aria-hidden={ariaHidden}
+    >
+      <path
+        d="M12 2.25 20.5 7.15v9.7L12 21.75 3.5 16.85v-9.7L12 2.25Z"
+        stroke={color}
+        strokeWidth="1.75"
+        strokeLinejoin="round"
+        fill="currentColor"
+        fillOpacity="0.12"
+      />
+      <path
+        d="m9.25 7.75 8.1 3.35-3.45 1.4-1.4 3.45-3.25-8.2Z"
+        fill={color}
+      />
+    </svg>
+  );
+}
+
 const TECH_REGISTRY: Record<string, TechEntry> = {
   "Next.js": { icon: SiNextdotjs, color: "#ffffff" },
   React: { icon: SiReact, color: "#61dafb" },
@@ -68,7 +107,13 @@ const TECH_REGISTRY: Record<string, TechEntry> = {
   "Socket.io": { icon: SiSocketdotio, color: "#f8fafc" },
   Supabase: { icon: SiSupabase, color: "#3ecf8e" },
   PostgreSQL: { icon: SiPostgresql, color: "#4169e1" },
+  Cursor: { icon: CursorBrandIcon, color: "#38bdf8" },
+  Claude: { icon: SiClaude, color: "#d97757" },
+  "ChatGPT / OpenAI": { icon: SiOpenai, color: "#10a37f" },
+  ChatGPT: { icon: SiOpenai, color: "#10a37f" },
   "Google Gemini": { icon: SiGooglegemini, color: "#8e75ff" },
+  "GitHub Copilot": { icon: SiGithubcopilot, color: "#e2e8f0" },
+  Perplexity: { icon: SiPerplexity, color: "#20b8cd" },
   OpenAI: { icon: SiOpenai, color: "#10a37f" },
   "APIs de LLM (Groq & OpenRouter)": {
     icon: BrainCircuit,
@@ -115,10 +160,10 @@ export const CORE_ORBIT_TECHS: string[] = [
   "Node.js",
   "Supabase",
   "Expo",
+  "Cursor",
+  "Claude",
+  "ChatGPT / OpenAI",
   "Google Gemini",
-  "Motion",
-  "Vercel",
-  "WebGL",
 ];
 
 function resolveTechEntry(name: string): TechEntry {

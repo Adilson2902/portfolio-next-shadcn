@@ -1,12 +1,16 @@
 import type { MetadataRoute } from "next";
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Adilson Adriano — Portfólio",
-    short_name: "Adilson",
+    name: "Adilson Adriano — Sites, Sistemas Web, Ferramentas Online & 3D",
+    short_name: "Adilson Adriano",
+    description:
+      "Portfólio de Adilson Adriano: sites comerciais para empresas, calculadoras interativas, micro-SaaS, apps mobile e interfaces 3D com entrega rápida.",
     start_url: "/",
     display: "browser",
-    background_color: "#101017",
-    theme_color: "#101017",
+    lang: "pt-BR",
+    background_color: "#080412",
+    theme_color: "#080412",
     icons: [{ src: "/favicon.ico", sizes: "any", type: "image/x-icon" }],
   };
 }

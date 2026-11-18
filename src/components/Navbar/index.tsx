@@ -2,10 +2,11 @@ import Link from "next/link";
 
 const navLinks = [
   { href: "/#projects", label: "Projetos" },
+  { href: "/#velocity", label: "Entrega IA" },
   { href: "/#services", label: "Soluções" },
   { href: "/#solutions", label: "Simulador" },
   { href: "/#live", label: "No ar" },
-  { href: "/#tech", label: "Stack" },
+  { href: "/blog", label: "Artigos" },
 ];
 
 export function Navbar() {

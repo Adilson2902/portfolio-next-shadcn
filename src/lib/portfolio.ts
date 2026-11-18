@@ -266,8 +266,11 @@ export const techGroups: TechGroup[] = [
     ],
   },
   {
-    title: "IA aplicada",
+    title: "IA & velocidade de entrega",
     items: [
+      "Cursor",
+      "Claude",
+      "ChatGPT / OpenAI",
       "Google Gemini",
       "APIs de LLM (Groq & OpenRouter)",
       "Visão computacional",
@@ -344,5 +347,52 @@ export const activity: ActivityItem[] = [
     title: "Produto próprio em operação",
     description:
       "Lançamento e evolução contínua do Toolspace: catálogo, monetização e melhoria de performance.",
+  },
+];
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export const faqs: ReadonlyArray<FaqItem> = [
+  {
+    question: "Como começamos um projeto ou ferramenta?",
+    answer:
+      "Você me conta qual é o objetivo do negócio, quem vai usar e o que já existe hoje (textos, marca ou referência). A partir dessa conversa inicial, desenho o escopo recomendado, as prioridades e uma proposta clara antes de qualquer código.",
+  },
+  {
+    question:
+      "Como você consegue entregar rápido mantendo código limpo e personalizado?",
+    answer:
+      "Combino engenharia assistida por IA no dia a dia (Cursor, Claude, ChatGPT e Google Gemini) com componentes reutilizáveis próprios (Aura UI) e a base validada do Toolspace. A IA acelera prototipagem, revisão de bordas e testes automatizados — enquanto arquitetura, design 3D, SEO e qualidade final seguem sob controle técnico rigoroso.",
+  },
+  {
+    question: "Você também melhora ou refaz sites e sistemas existentes?",
+    answer:
+      "Sim. Podemos revisar a interface atual, corrigir lentidão no celular, organizar a navegação para gerar mais pedidos de orçamento no WhatsApp e modernizar o front-end mantendo o que já funciona no seu domínio.",
+  },
+  {
+    question:
+      "Você cria calculadoras interativas, ferramentas online e micro-SaaS exclusivos?",
+    answer:
+      "Sim. Além de sites institucionais, desenvolvo calculadoras de orçamento, simuladores, catálogos interativos e ferramentas online completas — aplicando na prática a experiência de construção do Toolspace, que reúne mais de 300 ferramentas no ar.",
+  },
+  {
+    question:
+      "Os sites e ferramentas vêm preparados para celular e Google (SEO)?",
+    answer:
+      "Sim. Todo projeto nasce responsivo (mobile-first), com carregamento rápido, metadados configurados, dados estruturados (JSON-LD), estrutura semântica e foco em facilitar que clientes encontrem seus serviços no Google e em buscadores com IA.",
+  },
+  {
+    question:
+      "Qual a diferença entre um modelo pronto personalizável e um projeto sob medida?",
+    answer:
+      "Nos modelos personalizáveis, partimos de uma base já validada (como clínicas/estética, veículos, cursos/autoescolas ou eventos) e adaptamos à sua marca e oferta com lançamento mais ágil. No sob medida, a arquitetura, regras e integrações são desenhadas do zero para o seu fluxo.",
+  },
+  {
+    question: "Como são definidos prazo, etapas e proposta antes do início?",
+    answer:
+      "Tudo depende do escopo, das integrações necessárias e dos materiais disponíveis. Antes de começar, você recebe uma proposta transparente com entregas por etapa, prazo estimado, valor combinado e condições de suporte pós-lançamento.",
   },
 ];
