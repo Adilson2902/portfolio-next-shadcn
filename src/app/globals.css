@@ -218,6 +218,7 @@
     position: relative;
     z-index: 1;
     outline: none;
+    overflow-x: clip;
   }
 
   section[id] {
@@ -700,7 +701,7 @@
   padding-top: 84px;
   padding-bottom: 84px;
   display: grid;
-  grid-template-columns: 1.45fr 1fr;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
   align-items: center;
   gap: 58px;
 }
@@ -709,7 +710,7 @@
   position: absolute;
   top: -120px;
   left: 50%;
-  width: min(1120px, 110vw);
+  width: min(1120px, 100vw);
   height: 360px;
   transform: translateX(-50%);
   pointer-events: none;
@@ -766,12 +767,10 @@
   display: block;
 }
 
-.hero > :not(.hero-backdrop):not(.hero-perspective-grid) {
+.hero-copy,
+.portrait-panel {
   position: relative;
   z-index: 1;
-}
-
-.hero-copy {
   min-width: 0;
 }
 
@@ -2902,6 +2901,7 @@
 .proof-ribbon {
   position: relative;
   z-index: 1;
+  overflow: hidden;
   border-top: 1px solid rgba(167, 139, 250, 0.14);
   border-bottom: 1px solid rgba(167, 139, 250, 0.14);
   background: rgba(12, 8, 25, 0.65);
@@ -3168,6 +3168,8 @@
   font-size: 12px;
   line-height: 1.75;
   color: #bae6fd;
+  overflow-x: auto;
+  word-break: break-word;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
@@ -3711,8 +3713,27 @@
    Responsive Breakpoints (1050px, 760px, 520px)
    ========================================================================== */
 @media (max-width: 1050px) {
+  .site-header nav {
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .site-header nav::-webkit-scrollbar {
+    display: none;
+  }
+
   .hero {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
     gap: 36px;
+  }
+
+  .portrait-badge-availability {
+    left: 0;
+  }
+
+  .portrait-badge-tools {
+    right: 0;
   }
 
   .project-grid {
@@ -3741,6 +3762,20 @@
   .faq-section {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 52px;
+    padding-bottom: 40px;
+    gap: 40px;
+  }
+
+  .portrait-panel {
+    justify-self: center;
+    max-width: 360px;
   }
 }
 
@@ -3809,6 +3844,14 @@
 
   .portrait-badge {
     background: rgba(13, 9, 28, 0.95);
+    font-size: 10.5px;
+    padding: 6px 10px;
+  }
+
+  .hero-velocity-strip {
+    border-radius: 16px;
+    font-size: 12px;
+    line-height: 1.45;
   }
 
   .preview-float-pill,
