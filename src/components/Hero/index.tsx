@@ -51,7 +51,7 @@ export function Hero() {
         <p className="hero-description">
           Desenvolvo sites de alta conversão para empresas, sistemas web sob
           medida, calculadoras interativas e aplicativos mobile com experiência
-          3D. Criador do <strong>Toolspace</strong> — no ar com mais de 300
+          3D. Criador do <strong>Toolspace</strong> — no ar com mais de 400
           ferramentas gratuitas e app Android.
         </p>
         <div className="hero-velocity-strip">
@@ -118,7 +118,7 @@ export function Hero() {
           </div>
           <div className="portrait-badge portrait-badge-tools" data-depth="6">
             <Sparkles size={13} aria-hidden="true" />
-            <span>+300 ferramentas no ar</span>
+            <span>400+ ferramentas no ar</span>
           </div>
           <div className="portrait-tech-strip" data-depth="5">
             {HERO_TECHS.map((tech) => (

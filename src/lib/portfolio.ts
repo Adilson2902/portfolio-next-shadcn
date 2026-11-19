@@ -45,7 +45,7 @@ export const projects: Project[] = [
     category: "Produto próprio",
     number: "01",
     description:
-      "Plataforma com mais de 300 ferramentas online gratuitas, organizadas por temas, com hubs dedicados e aplicativo Android.",
+      "Plataforma com mais de 400 ferramentas online gratuitas, organizadas por temas, com hubs dedicados e aplicativo Android.",
     challenge:
       "Organizar ferramentas de diferentes áreas e facilitar o acesso à utilidade certa.",
     delivery:

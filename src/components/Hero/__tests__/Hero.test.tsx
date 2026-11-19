@@ -41,7 +41,7 @@ describe("Hero", () => {
     expect(
       screen.getByText("Disponível p/ novos projetos"),
     ).toBeInTheDocument();
-    expect(screen.getByText("+300 ferramentas no ar")).toBeInTheDocument();
+    expect(screen.getByText("400+ ferramentas no ar")).toBeInTheDocument();
 
     const techPills = container.querySelectorAll(".portrait-tech-pill");
     expect(techPills).toHaveLength(6);
