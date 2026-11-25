@@ -15,6 +15,8 @@ const AI_AND_SEARCH_BOTS = [
   "*",
 ];
 
+export const dynamic = "force-static";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: AI_AND_SEARCH_BOTS.map((userAgent) => ({

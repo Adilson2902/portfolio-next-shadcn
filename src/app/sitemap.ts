@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { articles } from "@/lib/articles";
 import { profile } from "@/lib/portfolio";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     {
