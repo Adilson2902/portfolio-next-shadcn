@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import {
   JetBrains_Mono,
   Plus_Jakarta_Sans,
@@ -106,6 +107,18 @@ export default function RootLayout({
           {children}
         </main>
         <FloatingCTA />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-2SGKSNY82F"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-2SGKSNY82F');
+          `}
+        </Script>
       </body>
     </html>
   );
